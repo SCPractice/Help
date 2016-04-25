@@ -147,5 +147,10 @@
 			<result name="success" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="failed">/findMission.jsp</result>
 		</action>
+		<!-- 搜索加入小组 -->
+		<action name="searchGroup" class="searchGroupAction" method="join">
+			<result name="joinsuccess" >/SearchGroup.jsp</result>
+			<result name="joinfailed">/SearchGroup.jsp</result>
+		</action>
 	</package>
 </struts>    

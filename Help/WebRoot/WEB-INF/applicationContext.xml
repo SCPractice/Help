@@ -128,13 +128,27 @@
         <property name="orderController" ref="merchantOrderController"/>
     </bean>
 	
+	<!-- 小组DAO -->
+	<bean id="groupDAO" class="cn.edu.zjut.dao.GroupDAO" parent="baseDAO" />
+	
+	<!-- 搜索小组service -->
+	<bean id="searchGroupController" class="cn.edu.zjut.service.SearchGroupController">
+        <property name="groupDAO" ref="groupDAO"/>
+        <property name="employeeDAO" ref="employeeDAO" />
+    </bean>
+	
+	<!-- 搜索小组action -->
+	<bean id="searchGroupAction" class="cn.edu.zjut.action.SearchGroupAction" scope="prototype">
+		<property name="searchGroupController" ref="searchGroupController" />
+	</bean>
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" 
                     value="com.mysql.jdbc.Driver"/>
 		<property name="url" 
                     value="jdbc:mysql://localhost:3306/helpdb"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>
+		<property name="password" value="123456"/>
 	</bean>
 	
 	<bean id="sessionFactory"
@@ -154,6 +168,7 @@
 			    <value>cn/edu/zjut/po/Employee.hbm.xml</value>
 			    <value>cn/edu/zjut/po/Merchant.hbm.xml</value>
 			    <value>cn/edu/zjut/po/Order.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Igroup.hbm.xml</value>
 		    </list>
 	    </property>
 	</bean>

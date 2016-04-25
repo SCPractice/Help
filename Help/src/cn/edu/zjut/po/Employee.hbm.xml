@@ -7,6 +7,9 @@
             <column name="employeeID" length="12"/>
             <generator class="assigned"/>
         </id>
+        <many-to-one name="group" class="cn.edu.zjut.po.Igroup">
+            <column name="groupID" />
+        </many-to-one>
         <property name="employeePassword" type="string">
             <column name="employeePassword" length="32"/>
         </property>
