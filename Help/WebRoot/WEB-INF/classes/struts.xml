@@ -149,8 +149,23 @@
 		</action>
 		<!-- 搜索加入小组 -->
 		<action name="searchGroup" class="searchGroupAction" method="join">
-			<result name="joinsuccess" >/SearchGroup.jsp</result>
+			<result name="joinsuccess" type="chain">findTeam</result>
 			<result name="joinfailed">/SearchGroup.jsp</result>
 		</action>
+		
+		
+		<action name="findTeam" class="employeeTeamAction" method="findTeam">
+			<result name="success">/EmployeeTeam.jsp</result>
+		</action>
+		<action name="employeeCreateTeam" class="employeeCreateTeamAction" method="employeeCreateTeam">
+			<result name="success" type="chain">findTeam</result>
+			<result name="input">/EmployeeCreateTeam.jsp</result>
+			<result name="failed">/EmployeeCreateTeam.jsp</result>
+		</action>
+		<action name="employeeExitTeam" class="employeeTeamAction" method="employeeExitTeam">
+			<result name="success" type="chain">findTeam</result>
+			
+		</action>
+		
 	</package>
 </struts>    

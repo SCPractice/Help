@@ -149,7 +149,7 @@
 					<li><a href="#contact" onclick="showDiv('contact')"><i
 							class="fa fa-cog"></i>个人信息</a></li>
 					<li><a href="#team" onclick="showDiv('team')"><i
-							class="fa fa-flag"></i>我要加入</a></li>
+							class="fa fa-flag"></i>我的团队</a></li>
 				</ul>
 			</div>
 		</div>
@@ -215,7 +215,7 @@
 				<li><a href="#contact" onclick="showDiv('contact')"><i
 						class="fa fa-cog"></i>个人信息</a></li>
 				<li><a href="#team" onclick="showDiv('team')"><i
-						class="fa fa-flag"></i>我要加入</a></li>
+						class="fa fa-flag"></i>我的团队</a></li>
 			</ul>
 		</div>
 		<!-- .main-navigation -->
@@ -339,12 +339,12 @@
 						width="100%"></iframe>
 				</div>
 
-				<!-- 我要组队 -->
+				
+				<!-- 我的团队 -->
 				<div id="team" style="display:none">
-				    <iframe id="team" src="SearchGroup.jsp" height="800px"
-						width="100%"></iframe>
-				</div>
-
+					<iframe id="team" src="findTeam" height="800px" width="100%"></iframe>
+				</div>	
+				
 				<div class="row" id="footer">
 					<hr></hr>
 					<div class="col-md-12 text-center">

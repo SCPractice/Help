@@ -10,4 +10,7 @@ public interface IEmployeeDAO {
 	boolean update(Employee employee);//受雇者信息更新
 	boolean findByIDNum(Employee employee);//验证身份证号
 	public List findByHQL(String hql);//根据HQL语句查询
+	public List findTeams();//查询小组及其成员
+	public boolean updateIgroupID();//更新所属小组
+	public boolean exitTeam();
 }

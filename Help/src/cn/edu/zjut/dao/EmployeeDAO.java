@@ -12,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 import com.opensymphony.xwork2.ActionContext;
 
 import cn.edu.zjut.po.Employee;
+import cn.edu.zjut.po.Igroup;
 import cn.edu.zjut.po.Merchant;
 import cn.edu.zjut.po.Order;//临时测试用
 
@@ -141,4 +142,98 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		}
 	}
 	
+	
+
+	@Override
+	public List findTeams() {
+		// TODO Auto-generated method stub
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		Employee employee=(Employee) session.get("employee");
+		String employeeID=employee.getEmployeeID();
+		List list=null;
+		System.out.println("employeeID");
+		if(employee.getGroup()==null){
+			//session.put("igroup",igroup);
+			return null;
+		}else{
+			try{
+				Igroup igroup=employee.getGroup();
+				session.put("igroup",igroup);
+				System.out.println(igroup);
+				System.out.println(employee.getGroup());
+				String hqll="from Employee as emp where emp.group='"+igroup.getGroupID()+"'";
+				Query queryObject = getSession().createQuery(hqll);
+				list=queryObject.list();
+				if(list.isEmpty())
+					System.out.println("kong");
+				getSession().close();
+				return list;
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				getSession().close();
+			}
+			return null;
+		}
+	}
+
+	public boolean updateIgroupID(){
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		Employee employee=(Employee) session.get("employee");
+		Igroup igroup=(Igroup) session.get("igroup");
+		employee.setGroup(igroup);
+		Session esession = getSession();
+		Transaction tran = esession.beginTransaction();
+		try{
+			esession.update(employee);
+			tran.commit();
+			System.out.println("更新group成功");
+			session.put("employee", employee);
+		}catch(Exception e){
+			System.out.println("更新group失败");
+			e.printStackTrace();
+			return false;
+		}finally{
+			esession.close();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean exitTeam() {
+		// TODO Auto-generated method stub
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		int flag=(Integer) session.get("flag");
+		Employee employee=(Employee) session.get("employee");
+		Igroup igroup=(Igroup) session.get("igroup");
+		Session esession = getSession();
+		Transaction tran = esession.beginTransaction();
+		try{
+			employee.setGroup(null);
+			esession.update(employee);
+			String hql="from Employee where group='"+igroup.getGroupID()+"'";
+			Query query=esession.createQuery(hql);
+			List list=query.list();
+			if(list.isEmpty()){
+				
+				String hqll="delete Igroup as g where g.groupID='"+igroup.getGroupID()+"'";
+				query=esession.createQuery(hqll);
+				query.executeUpdate();
+				
+			}
+			tran.commit();
+			session.remove("igroup");
+			System.out.println(igroup);
+			session.put("employee", employee);
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}finally{
+			esession.close();
+		}
+		return true;
+	}
 }

@@ -142,13 +142,37 @@
 		<property name="searchGroupController" ref="searchGroupController" />
 	</bean>
 	
+	
+		<!-- 鏌ユ壘鏄惁鏈夐槦浼?-->
+	<bean id="employeeTeamAction" class="cn.edu.zjut.action.EmployeeTeamAction" scope="prototype">
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeTeamController" class="cn.edu.zjut.service.EmployeeTeamController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	
+	</bean>
+	
+	<!-- 鍒涘缓闃熶紞 -->
+	
+	<bean id="employeeCreateTeamAction" class="cn.edu.zjut.action.EmployeeCreateTeamAction" scope="prototype">
+		<property name="employeeCreateTeamController" ref="employeeCreateTeamController"/>
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeCreateTeamController" class="cn.edu.zjut.service.EmployeeCreateTeamController">
+		<property name="igroupDAO" ref="groupDAO" />
+	</bean>
+	
+	
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" 
                     value="com.mysql.jdbc.Driver"/>
 		<property name="url" 
                     value="jdbc:mysql://localhost:3306/helpdb"/>
 		<property name="username" value="root"/>
-		<property name="password" value="123456"/>
+		<property name="password" value="root"/>
 	</bean>
 	
 	<bean id="sessionFactory"

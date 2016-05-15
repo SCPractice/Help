@@ -5,7 +5,7 @@
 	<class name="cn.edu.zjut.po.Igroup" table="igroup" catalog="helpdb">
 		<id name="groupID" type="string">
 			<column name="groupID" length="32" />
-			<generator class="increment" />
+			<generator class="uuid" />
 		</id>
 		<property name="groupName" type="string">
 			<column name="groupName" length="16" />

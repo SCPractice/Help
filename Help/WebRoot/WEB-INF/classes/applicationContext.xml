@@ -127,6 +127,29 @@
 	<bean id="employeeUploadAction" class="cn.edu.zjut.action.EmployeeUploadAction" scope="prototype">
 	</bean>
 
+
+		<!-- 鏌ユ壘鏄惁鏈夐槦浼?-->
+	<bean id="employeeTeamsAction" class="cn.edu.zjut.action.EmployeeTeamsAction" scope="prototype">
+		<property name="employeeTeamsController" ref="employeeTeamsController"/>
+	</bean>
+	
+	<bean id="employeeTeamsController" class="cn.edu.zjut.service.EmployeeTeamsController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<!-- 鍒涘缓闃熶紞 -->
+	<bean id="igroupDAO" class="cn.edu.zjut.dao.IgroupDAO" parent="baseDAO"/>
+	<bean id="employeeCreateTeamAction" class="cn.edu.zjut.action.EmployeeCreateTeamAction" scope="prototype">
+		<property name="employeeCreateTeamController" ref="employeeCreateTeamController"/>
+		<property name="employeeTeamsController" ref="employeeTeamsController"/>
+	</bean>
+	
+	<bean id="employeeCreateTeamController" class="cn.edu.zjut.service.EmployeeCreateTeamController">
+		<property name="igroupDAO" ref="igroupDAO" />
+	</bean>
+	
+	
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" 
                     value="com.mysql.jdbc.Driver"/>
