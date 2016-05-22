@@ -35,7 +35,7 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			request.put("tip", "注册成功");
 		} catch (RuntimeException re) {
 			if(tran != null) tran.rollback();
-			request.put("tip", "注册失败，该学号已被使用");
+			System.out.println("注册失败！");
 			return false;
 		} finally {
 			getSession().close();

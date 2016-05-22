@@ -24,8 +24,12 @@ public class EmployeeTeamAction extends ActionSupport {
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
 		session.put("teamMemberList", teamMemberList);
-		
-		return "success";
+		String groupid=((Employee)session.get("employee")).getGroupID();
+		if(groupid!=null &&groupid!=""){
+			session.put("groupID", groupid);
+		    return "teamfound";
+		}
+		else return "teamnotfound";
 	}
 	
 	public String employeeExitTeam(){

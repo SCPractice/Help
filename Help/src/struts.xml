@@ -155,7 +155,8 @@
 		
 		
 		<action name="findTeam" class="employeeTeamAction" method="findTeam">
-			<result name="success">/EmployeeTeam.jsp</result>
+			<result name="teamfound">/EmployeeTeam.jsp</result>
+			<result name="teamnotfound">/EmployeeNoTeam.jsp</result>
 		</action>
 		<action name="employeeCreateTeam" class="employeeCreateTeamAction" method="employeeCreateTeam">
 			<result name="success" type="chain">findTeam</result>
@@ -164,8 +165,16 @@
 		</action>
 		<action name="employeeExitTeam" class="employeeTeamAction" method="employeeExitTeam">
 			<result name="success" type="chain">findTeam</result>
-			
 		</action>
 		
+		<!-- 聊天 -->
+		<action name="chatsend" class="sendAction" method="index">
+		</action>
+		<action name="chatreceive" class="receiveAction" method="index">
+		</action>
+		<action name="chatgroup" class="chatGroupAction" method="create">
+		    <result name="success">/ChatWindow.jsp</result>
+		    <result name="failed">/error.jsp</result>
+		</action>
 	</package>
 </struts>    
