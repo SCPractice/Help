@@ -28,9 +28,6 @@
         <property name="merchantPhone" type="java.lang.String">
             <column name="merchantPhone" length="11" />
         </property>
-        <property name="merchantMail" type="java.lang.String">
-            <column name="merchantMail" length="20" />
-        </property>
         <property name="shopName" type="java.lang.String">
             <column name="ShopName" length="50" />
         </property>

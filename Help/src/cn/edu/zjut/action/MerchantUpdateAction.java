@@ -28,10 +28,11 @@ public class MerchantUpdateAction extends ActionSupport{
 		this.merchantRegisterController = merchantRegisterController;
 	}
 	
-	public String updated() {
+	public String registerupdate() {
+		System.out.println("-----MerchantRegisterUpdateAction-----");
 		if(merchantRegisterController.update(merchant))
-			return "updatesuccess";
-		else return "updatefailed";
+			return "success";
+		else return "failed";
 	}
 	
 	public String update() {

@@ -31,6 +31,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 	}
 
 	public String register() {
+		System.out.println("-----EmployeeRegisterAction-----");
 		String securePassword="";
 		MD5 md5=new MD5();
 		try {
@@ -40,9 +41,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 			e.printStackTrace();
 		}
 		employee.setEmployeePassword(securePassword);
-		if(employeeRegisterController.register(employee) &&
-				employeeRegisterController.uploadidface(employee) &&
-				employeeRegisterController.uploadidback(employee)){
+		if(employeeRegisterController.register(employee)){
 			return "registersuccess";
 		}
 		return "registerfailed";

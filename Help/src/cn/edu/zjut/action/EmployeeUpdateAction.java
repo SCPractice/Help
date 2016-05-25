@@ -28,8 +28,8 @@ public class EmployeeUpdateAction extends ActionSupport{
 		this.employeeRegisterController = employeeRegisterController;
 	}
 	
-	public String updated() {
-		if(employeeRegisterController.update(employee))
+	public String registerUpdate() {
+		if(employeeRegisterController.registerUpdate(employee))
 			return "updatesuccess";
 		else return "updatefailed";
 	}
@@ -44,5 +44,12 @@ public class EmployeeUpdateAction extends ActionSupport{
 		if(employeeRegisterController.register(employee))
 			return "uploadsuccess";
 		else return "uploadfailed";
+	}
+	public String check() {
+		if(employeeRegisterController.check(employee.getEmployeeID()))
+			return "success";
+		else
+			return "failed";
+		
 	}
 }

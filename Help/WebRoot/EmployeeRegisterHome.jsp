@@ -21,7 +21,7 @@ document.createElement("menu");
 <header>
 	<div class="w12 header">
 	<a class="db logo fl"><!-- <img src="Employee/img/logo.jpg" width="327" height="94"  alt=""/> --></a>
-	<div class="fr logofr"><a>返回首页</a> |<a>客服中心</a><br>
+	<div class="fr logofr"><a href="index.jsp">返回首页</a> |<a>客服中心</a><br>
 	 如注册遇到问题请拨打：<strong style="font-size:14px;">123456</strong></div>
 	</div>
 </header>
@@ -32,7 +32,7 @@ document.createElement("menu");
 <section class="main w12">
 	<div class="title"><a class="title1 db fl">受雇者</a><a class="title2 db fl">商家</a></div>
 	<div class="fr tit2"><span class="arr"></span></div>
-	<div><iframe id="content" src="EmployeeRegisterBasic.jsp" height="840px" width="100%" frameborder="0"  ></iframe></div>
+	<div><iframe id="content" src="EmployeeRegisterBasic.jsp" height="700px" width="100%" frameborder="0"  ></iframe></div>
 </section>
 </body>
 </html>

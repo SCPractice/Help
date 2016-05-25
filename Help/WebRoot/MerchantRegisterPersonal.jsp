@@ -24,7 +24,6 @@
         function Step1() {
             $("#Step2Container").hide();           
         }
-
         function Step2() {
             $("#CurruntPicContainer").hide();
         }
@@ -146,20 +145,18 @@
 	<form action="MerchantRegisterUpdate" method="post">
 		<ul>
 			<li class="clr"><label class="fl mr2">账号：</label><input type="text" name="merchant.merchantID"  class="txt-m fl " value="${sessionScope.merchant.merchantID}" /></li>
-			<li class="clr"><label class="fl mr2">年龄：</label><input type="text" name="merchant.merchantAge" class="txt-m fl " value="${sessionScope.merchant.merchantAge}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantAge" class="txt-m fl " value="${sessionScope.merchant.merchantAge}" /></li>
 			<li class="clr"><label class="fl mr2">用户名：</label><input type="text" name="merchant.merchantUsername" class="txt-m fl " value="${sessionScope.merchant.merchantUsername}" /></li>
 			<li class="clr"><label class="fl mr2">个性签名：</label><input type="text" name="merchant.merchantSignature" class="txt-m fl " value="${sessionScope.merchant.merchantSignature}"/></li>
 			<li class="clr"><label class="db fl">&nbsp;</label><input type="submit" class="db fl next" value="下一步" /></li>
-			<div style="display:none"><li><input type="hidden"  name="merchant.merchantPassword" value="${sessionScope.merchant.merchantPassword}" /></li>
-			<li><input type="hidden" name="merchant.merchantIDNum" value="${sessionScope.merchant.merchantIDNum}" /></li>
-			<li><input type="hidden" name="merchant.merchantName" value="${sessionScope.merchant.merchantName}" /></li>
-			<li><input type="hidden" name="merchant.merchantSex" value="${sessionScope.merchant.merchantSex}" /></li>
-			<li><input type="hidden" name="merchant.merchantPhone" value="${sessionScope.merchant.merchantPhone}" /></li>
-			<li><input type="hidden" name="merchant.shopAddress" value="${sessionScope.merchant.shopAddress}" /></li>
-			<li><input type="hidden" name="merchant.merchantIMG" value="${sessionScope.merchant.merchantIMG}" /></li>
-			<li><input type="hidden" name="merchant.merchantState" value="${sessionScope.merchant.merchantState}"/></li>
-			<li><input type="hidden" name="merchant.merchantGrade" value="${sessionScope.merchant.merchantGrade}"/></li>
-			</div>
+			<li style="display:none"><input type="hidden"  name="merchant.merchantPassword" value="${sessionScope.merchant.merchantPassword}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantIDNum" value="${sessionScope.merchant.merchantIDNum}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantName" value="${sessionScope.merchant.merchantName}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantSex" value="${sessionScope.merchant.merchantSex}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.shopAddress" value="${sessionScope.merchant.shopAddress}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantIMG" value="${sessionScope.merchant.merchantIMG}" /></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantState" value="${sessionScope.merchant.merchantState}"/></li>
+			<li style="display:none"><input type="hidden" name="merchant.merchantGrade" value="${sessionScope.merchant.merchantGrade}"/></li>		
 		</ul>
 	</form>
 	</div>

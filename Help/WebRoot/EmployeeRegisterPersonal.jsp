@@ -143,25 +143,23 @@
 	<div class="inputsec">
 	
 	
-	<form action="EmployeeUpdate" method="post">
+	<form action="EmployeeRegisterUpdate" method="post">
 		<ul>
 			<li class="clr"><label class="fl mr2">账号：</label><input type="text" name="employee.employeeID"  class="txt-m fl " value="${sessionScope.employee.employeeID}" /></li>
-			<li><input type="hidden" name="employee.employeeAge" class="txt-m fl " value="${sessionScope.employee.employeeAge}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeAge" class="txt-m fl " value="${sessionScope.employee.employeeAge}" /></li>
 			<li class="clr"><label class="fl mr2">用户名：</label><input type="text" name="employee.employeeUserName" class="txt-m fl " value="${sessionScope.employee.employeeUserName}" /></li>
 			<li class="clr"><label class="fl mr2">个性签名：</label><input type="text" name="employee.employeeSignature" class="txt-m fl " value="${sessionScope.employee.employeeSignature}"/></li>
 			<li class="clr"><label class="db fl">&nbsp;</label><input type="submit" class="db fl next" value="下一步" /></li>
-			<div style="display:none"><li><input type="hidden"  name="employee.employeePassword" value="${sessionScope.employee.employeePassword}" /></li>
-			<li><input type="hidden" name="employee.employeeIDNum" value="${sessionScope.employee.employeeIDNum}" /></li>
-			<li><input type="hidden" name="employee.employeeName" value="${sessionScope.employee.employeeName}" /></li>
-			<li><input type="hidden" name="employee.employeeSex" value="${sessionScope.employee.employeeSex}" /></li>
-			<li><input type="hidden" name="employee.employeePhone" value="${sessionScope.employee.employeePhone}" /></li>
-			<li><input type="hidden" name="employee.shopAddress" value="${sessionScope.employee.employeeAddress}" /></li>
-			<li><input type="hidden" name="employee.employeeIMG" value="${sessionScope.employee.employeeIMG}" /></li>
-			<li><input type="text" name="employee.employeeSignature" value="${sessionScope.employee.employeeSignature}"/></li>
-			<li><input type="hidden" name="employee.employeeState" value="${sessionScope.employee.employeeState}"/></li>
-			<li><input type="hidden" name="employee.employeeGrade" value="${sessionScope.employee.employeeGrade}"/></li>
-			</div>
-			<!-- li class="clr"><a href="EmployeeRegisterSuccess.jsp">跳过</a></li -->
+			<li style="display:none"><input type="hidden"  name="employee.employeePassword" value="${sessionScope.employee.employeePassword}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeIDNum" value="${sessionScope.employee.employeeIDNum}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeName" value="${sessionScope.employee.employeeName}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeSex" value="${sessionScope.employee.employeeSex}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeePhone" value="${sessionScope.employee.employeePhone}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.shopAddress" value="${sessionScope.employee.employeeAddress}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeIMG" value="${sessionScope.employee.employeeIMG}" /></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeState" value="${sessionScope.employee.employeeState}"/></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeGrade" value="${sessionScope.employee.employeeGrade}"/></li>
+			<!-- <li class="clr"><a href="EmployeeRegisterSuccess.jsp">跳过</a></li> -->
 		</ul>
 	</form>
 	</div>

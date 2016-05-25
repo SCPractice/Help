@@ -20,6 +20,7 @@ public class MerchantRegisterController implements IMerchantRegisterController {
 		this.merchantDAO = merchantDAO;
 	}
 	public boolean register(Merchant merchant) {  
+		System.out.println("-----MerhcantRegisterController-----");
 		ActionContext ctx= ActionContext.getContext();
 		Map<String, Object> session = (Map) ctx.getSession();
         Map<String, Object> request = (Map) ctx.get("request");
@@ -39,11 +40,11 @@ public class MerchantRegisterController implements IMerchantRegisterController {
 		merchant.setMerchantIMG("Merchant/MerchantIMG/"+merchant.getMerchantID()+"/head.jpg"); 
 		System.out.println(merchant.getMerchantIMG());
 		 if (merchantDAO.find(merchant.getMerchantID()) != null) {
-	            request.put("tip", "鐢ㄦ埛宸插瓨鍦�");
+	            System.out.println("用户已经注册！");
 	            return false;
 	        } else {
 	    			 session.put("merchant", merchant);
-	            request.put("tip", "娉ㄥ唽鎴愬姛");
+	            System.out.println("注册成功！");
 	            return merchantDAO.save(merchant);
 	        }
 		

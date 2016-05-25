@@ -31,9 +31,11 @@ public class MerchantRegisterAction extends ActionSupport{
 	}
 
 	public String register() {
+		System.out.println("-----MerchantRegisterAction-----");
 		String securePassword="";
 		MD5 md5=new MD5();
 		try {
+			
 			//对密码进行MD5加密
 			securePassword = md5.md5Encode(merchant.getMerchantPassword());
 		} catch (Exception e) {

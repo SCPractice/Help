@@ -2,23 +2,37 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="strutsBean" extends="struts-default" namespace="/">
+	    
+	    <!-- 受雇者登陆 -->
 		<action name="EmployeeLogin" class="employeeLoginAction" method="login">
 			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="loginfailed">/EmployeeLogin.jsp</result>
 			<result name="input">/EmployeeLogin.jsp</result>
 		</action>
-		<action name="EmployeeUpdated" class="employeeUpdateAction" method="updated">
+		
+		<!-- 受雇者更新个人信息 -->
+		<action name="EmployeeUpdated" class="employeeUpdateAction" method="update">
 			<result name="updatesuccess" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="updatefailed" type="redirect">/EmployeeIndex.jsp</result>
 		</action>
+		
+		<!-- 受雇者注册 -->
 		<action name="EmployeeRegister" class="employeeRegisterAction" method="register">
 			<result name="registersuccess">/EmployeeRegisterPersonal.jsp</result>
 			<result name="input">/EmployeeRegisterBasic.jsp</result>
 			<result name="registerfailed">/EmployeeRegisterBasic.jsp</result>
 		</action>
-		<action name="EmployeeUpdate" class="employeeUpdateAction" method="update">
+		
+		<!-- 受雇者完善个人信息 -->
+		<action name="EmployeeRegisterUpdate" class="employeeUpdateAction" method="registerUpdate">
 			<result name="updatesuccess">/EmployeeRegisterSuccess.jsp</result>
 			<result name="updatefailed">/EmployeeRegisterPersonal.jsp</result>
+		</action>
+		
+		<!-- 受雇者自动校验 -->
+		<action name="EmployeeCheck" class="employeeUpdateAction" method="check">
+			<result name="success">/EmployeeCheckedSuccess.jsp</result>
+			<result name="failed">/EmployeeCheckedPersonal.jsp</result>
 		</action>
 		
 		<!-- 商家登录 -->
@@ -39,10 +53,10 @@
 
 		<!-- 商家注册上传图片更新 -->
 		<action name="MerchantRegisterUpdate" class="merchantUpdateAction"
-			method="update">
-			<result name="updatesuccess">/MerchantRegisterSuccess.jsp
+			method="registerupdate">
+			<result name="success">/MerchantRegisterSuccess.jsp
 			</result>
-			<result name="updatefailed">/MerchantRegisterPersonal.jsp
+			<result name="failed">/MerchantRegisterPersonal.jsp
 			</result>
 		</action>
 		
@@ -51,7 +65,7 @@
 			method="update">
 			<result name="updatesuccess" type="redirect">/MerchantIndex.jsp</result>
 			<result name="updatefailed">/MerchantIndex.jsp</result>
-			<result name="input">/MerchantIndex.jsp</result>
+			<!-- <result name="input">/MerchantIndex.jsp</result> -->
 		</action>
 		
 		<!-- 商家上传图片 -->

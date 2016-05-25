@@ -28,7 +28,7 @@ canvas {
   <script src="Employee/js/wait2.js"></script>
 <div style="text-align:center;clear:both;">
 <div>
-<p>恭喜你已经完成资料填写，等待管理员审核！！！
+<p>恭喜你已经完成资料填写，请前往邮箱验信息！！！
 <p>在等待审核的过程中，你可以登录进入主界面浏览我们提供大致服务 ，但不具有接受招募的权限</p>
 <div class="inputsec">
 <ul>
