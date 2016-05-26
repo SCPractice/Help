@@ -12,7 +12,7 @@
 			System.out.println("驱动类未找到，注意：驱动包是否导入了" + e.getMessage());
 		}
 		Connection con = java.sql.DriverManager.getConnection(
-				"jdbc:mysql://localhost/helpdb", "root", "123456");
+				"jdbc:mysql://localhost/helpdb", "root", "root");
 		Statement stmt = con.createStatement();
 		ResultSet rst = stmt.executeQuery("select * from igroup where groupName like '"+gname+"%'");//模糊搜索
 		while (rst.next()) {

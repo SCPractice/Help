@@ -160,7 +160,7 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			try{
 				Igroup igroup=employee.getGroup();
 				session.put("igroup",igroup);
-				System.out.println(igroup);
+				//System.out.println(igroup);
 				System.out.println(employee.getGroup());
 				String hqll="from Employee as emp where emp.group='"+igroup.getGroupID()+"'";
 				Query queryObject = getSession().createQuery(hqll);

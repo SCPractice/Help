@@ -19,6 +19,7 @@ public class EmployeeTeamAction extends ActionSupport {
 	private EmployeeTeamController employeeTeamsController;
 	private List teamMemberList;
 	private Map<String,Object> session;
+	
 	public String findTeam(){
 		teamMemberList=employeeTeamsController.findTeam();
 		ActionContext ctx= ActionContext.getContext();
