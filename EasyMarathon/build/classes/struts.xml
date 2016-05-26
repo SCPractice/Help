@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" 
+		/> <constant name="struts.devMode" value="true" /> -->
+
+	<package name="strutsBean" extends="struts-default" namespace="/">
+		<action name="uploadPic" class="com.EasyMarathon.action.PicAction"
+			method="uploadPic">
+			<result name="success">/bg/uploadsuccess.jsp</result>
+			<result name="fail">/bg/uploadunsuccess.jsp</result>
+			<result name="input">/bg/uploadPic.jsp</result>
+		</action>
+		 <action name="uploadPicforUser" class="com.EasyMarathon.action.PicAction"
+			method="uploadPicforUser">
+			<result name="success" type="dispatcher">test.jsp</result>
+			<result name="fail">/bg/uploadunsuccess.jsp</result>
+			<result name="input">/bg/uploadPicforUser.jsp</result>
+		</action> 
+		<action name="lockInfo" class="com.EasyMarathon.action.AthleteAction"
+			method="lockInfo">
+			<result name="success">/bg/lockInfosuccess.jsp</result>
+			<result name="fail">/bg/lockInfosuccess.jsp</result>
+		</action>
+
+		<action name="register" class="com.EasyMarathon.action.UserAction"
+			method="register">
+			<result name="success">/bg/mainPage.jsp</result>
+			<result name="fail">/bg/mainPage.jsp</result>
+		</action>
+
+		<action name="findPic" class="com.EasyMarathon.action.AthleteAction"
+			method="findPic">
+			<result name="success">/bg/findPicture.jsp</result>
+			<result name="fail">/bg/findunsuccess.jsp</result>
+		</action>
+	</package>
+
+</struts>
