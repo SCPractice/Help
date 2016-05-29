@@ -342,7 +342,7 @@
 				
 				<!-- 我的团队 -->
 				<div id="team" style="display:none">
-					<iframe id="team" src="findTeam" height="800px" width="100%"></iframe>
+					<iframe id="team" src="findTeam" height="840px" width="100%"></iframe>
 				</div>	
 				
 				<div class="row" id="footer">

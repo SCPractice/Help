@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class TeamMessage {
 	private int teamMessageID;
-	private String messageSender;
+	private String messageSender;	//发送者名字
+	private String senderIMG;		//发送者头像
 	private String messageContent;
 	private Date messageTime;
 	private String chatTeamID;
@@ -49,5 +50,13 @@ public class TeamMessage {
 
 	public void setChatTeamID(String chatTeamID) {
 		this.chatTeamID = chatTeamID;
+	}
+
+	public String getSenderIMG() {
+		return senderIMG;
+	}
+
+	public void setSenderIMG(String senderIMG) {
+		this.senderIMG = senderIMG;
 	}
 }

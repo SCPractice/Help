@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
-  <head>
-    
-    <title>聊天窗口</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="commonCSS/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="commonCSS/app.css" type="text/css" />  
+	<title>聊天窗口</title>
 
-  </head>
-  <script type="text/javascript">
+</head>
+<script type="text/javascript">
     
     var xmlHttp = false;
     
@@ -45,20 +48,49 @@
     if(xmlHttp.readyState==4){
         var xmlDoc=xmlHttp.responseText;
         var data=eval(xmlDoc);
-        var i=0
+        var i=0;
         if(data!=null){
-        var insertText="<table>";
+        var insertText="";
+        var userName="${sessionScope.employee.employeeUserName}";
+        //alert(userName);
         for (i=0;i<data.length;i++){
-        insertText=insertText+"<tr><td><font size=\"3\" color=\"#000079\">"+data[i].messageSender+":</font></td><td><font color=\"#2828FF\">"+data[i].messageContent+"</font></td></tr>";
+        //alert(data[i].messageSender.getString("UTF-8"));
+	        if(data[i].messageSender==userName){
+	        	insertText+="<article id=\"chat-id-"+i+"\" class=\"chat-item right\" >"+
+	                        "<a href=\"#\" class=\"pull-right thumb-sm avatar\"><img src=\""+data[i].senderIMG+"\" alt=\"...\"></a>"+
+	                        "<section class=\"chat-body\">"+
+	                        "<div class=\"panel bg-light text-sm m-b-none\">"+
+	                        "<div class=\"panel-body\">"+
+	                        "<span class=\"arrow right\"></span>"+
+	                        "<p class=\"m-b-none\" >"+data[i].messageContent+"</p>"+
+	                        "</div></div></section></article>";
+	        }
+	        else{
+	        	insertText+="<article id=\"chat-id-"+i+"\" class=\"chat-item left\" >"+
+	                        "<a href=\"#\" class=\"pull-left thumb-sm avatar\"><img src=\""+data[i].senderIMG+"\" alt=\"...\"></a>"+
+	                        "<section class=\"chat-body\">"+
+	                        "<div class=\"panel b-light text-sm m-b-none\">"+
+	                        "<div class=\"panel-body\">"+
+	                        "<span class=\"arrow left\"></span>"+
+	                        "<p class=\"m-b-none\" >"+data[i].messageContent+"</p>"+
+	                        "</div></div></section></article>";
+	        }
         }
-        insertText=insertText+"</table>";
         document.getElementById("insert").innerHTML = insertText;
         scrollTo(0,document.body.scrollHeight);
         }
     }
     }
-  </script>
-  <body>
-  <div id="insert"></div>
-  </body>
+</script>
+<body>
+<div class="row">
+	<div class="col-lg-12">
+		<section class="panel panel-default">
+			<header class="panel-heading">团队聊天窗口</header>
+			<section id="insert" class="chat-list panel-body" style="min-height:410px">
+			</section>
+		</section>
+	</div>
+</div>
+</body>
 </html>

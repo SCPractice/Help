@@ -38,7 +38,7 @@ public class ChatDAO  extends BaseHibernateDAO implements IChatDAO{
 		try{
 			String hql="from TeamMessage as t where t.chatTeamID='"+groupID+"'";
 			session=getSession();
-			System.out.println("receiving...");
+			//System.out.println("receiving...");
 			Query query=session.createQuery(hql);
 			List list=query.list();
 			return list;

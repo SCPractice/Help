@@ -44,17 +44,17 @@ function myFunction()
 </head>
 
 
-<body id="test">   
+<body id="test" style="font-family: Microsoft JhengHei">   
     <br><br><br><br>
     <h4 align="center"><s:property value="#request.jointip"/></h4>
     <h1 align="center">加入小组</h1>
     <form action="searchGroup" method="post" accept-charset="utf-8">
       <ol>        
         <li id="facebook-list" class="input-text">
-           <label>groupName input</label>
+           <p style="font-size:15px">请输入关键字进行查询</p>
            <div style="white-space:nowrap;">
               <input type="text" autocomplete="off" size="15" name="group.groupName" onKeyUp="myFunction()" id="suggest_input" >
-              <input type="submit" style="width:50px;height:29px" value="JOIN" >
+              <input type="submit" style="width:50px;height:30px;background-color:#f46151; border-color:#f46151;color:#ffffff" value="加入" >
            </div>
               <ul id="suggest_ul">
               </ul>
