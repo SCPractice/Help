@@ -10,6 +10,9 @@
         <property name="messageSender" type="string">
             <column name="messageSender" length="12"/>
         </property>
+        <property name="senderIMG" type="string">
+            <column name="senderIMG" length="45"/>
+        </property>
         <property name="messageTime" type="java.util.Date">
             <column name="messageTime" />
         </property>

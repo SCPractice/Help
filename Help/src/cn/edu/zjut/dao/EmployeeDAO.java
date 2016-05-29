@@ -152,16 +152,12 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		Employee employee=(Employee) session.get("employee");
 		String employeeID=employee.getEmployeeID();
 		List list=null;
-		System.out.println("employeeID");
 		if(employee.getGroup()==null){
-			//session.put("igroup",igroup);
 			return null;
 		}else{
 			try{
 				Igroup igroup=employee.getGroup();
 				session.put("igroup",igroup);
-				System.out.println(igroup);
-				System.out.println(employee.getGroup());
 				String hqll="from Employee as emp where emp.group='"+igroup.getGroupID()+"'";
 				Query queryObject = getSession().createQuery(hqll);
 				list=queryObject.list();
@@ -206,7 +202,6 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		// TODO Auto-generated method stub
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
-		int flag=(Integer) session.get("flag");
 		Employee employee=(Employee) session.get("employee");
 		Igroup igroup=(Igroup) session.get("igroup");
 		Session esession = getSession();

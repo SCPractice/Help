@@ -26,11 +26,12 @@ public class ReceiveAction extends ActionSupport{
 	
 	public void index() throws IOException{
 		HttpServletResponse response=ServletActionContext.getResponse();
-		System.out.println("receiving stage1...");
+		response.setCharacterEncoding("UTF-8");
+		//System.out.println("receiving stage1...");
 		try{
 			messageList=chatController.receiveMessage(groupID);
 			JSONArray json=JSONArray.fromObject(messageList);
-			System.out.println("receiving stage2...");
+			//System.out.println("receiving stage2...");
 			response.getWriter().write(json.toString());
 		}catch(Exception e){
 			e.printStackTrace();

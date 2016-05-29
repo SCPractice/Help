@@ -24,7 +24,7 @@ public class ChatController implements IChatController{
 	@Override
 	public List receiveMessage(String groupID) {
 		List messageList=chatDAO.receiveMessage(groupID);
-		System.out.println(messageList.toString());
+		//System.out.println(messageList.toString());
 		return messageList;
 	}
 	

@@ -1,4 +1,5 @@
 package cn.edu.zjut.action;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Map;
 
@@ -25,11 +26,21 @@ public class SendAction extends ActionSupport{
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
 		teamMessage=new TeamMessage();
+		
+		try {
+			content = java.net.URLDecoder.decode(content,"UTF-8");
+			System.out.println("content="+content);
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
 		teamMessage.setMessageContent(content);
 		Date date=new Date();
 		teamMessage.setMessageTime(date);
 		String sender=((Employee)session.get("employee")).getEmployeeUserName();
+		String senderIMG = ((Employee)session.get("employee")).getEmployeeIMG();
 		teamMessage.setMessageSender(sender);
+		teamMessage.setSenderIMG(senderIMG);
+		System.out.println("senderIMG="+senderIMG);
 		teamMessage.setChatTeamID(groupID);
 		try{
 			chatController.sendMessage(teamMessage);

@@ -19,12 +19,16 @@ public class EmployeeTeamAction extends ActionSupport {
 	private EmployeeTeamController employeeTeamsController;
 	private List teamMemberList;
 	private Map<String,Object> session;
+	
 	public String findTeam(){
 		teamMemberList=employeeTeamsController.findTeam();
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
 		session.put("teamMemberList", teamMemberList);
-		String groupid=((Employee)session.get("employee")).getGroupID();
+		String groupid="";
+		if(teamMemberList!=null && teamMemberList.size()>0){
+			groupid = ((Employee) teamMemberList.get(0)).getGroup().getGroupID();
+		}
 		if(groupid!=null &&groupid!=""){
 			session.put("groupID", groupid);
 		    return "teamfound";

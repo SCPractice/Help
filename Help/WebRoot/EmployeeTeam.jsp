@@ -2,17 +2,19 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="cn.edu.zjut.po.Employee"%>
 <%@ page import="java.util.List"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+     <title></title>
      <meta charset="utf-8"/>
-     <title>招募信息</title>
      <meta name="description" content=""/>
-     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        
+        <link rel="stylesheet" href="commonCSS/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="commonCSS/app.css" type="text/css" />
         
         <link rel="stylesheet" href="Employee/css/normalize.css"/>
         <link rel="stylesheet" href="Employee/css/font-awesome.css"/>
-        <link rel="stylesheet" href="Employee/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="Employee/css/templatemo-style.css"/>
         <link rel="stylesheet" href="Employee/css/menuList.css"/>
         <link rel="stylesheet" href="Employee/css/chinaz.css"/>
@@ -60,6 +62,8 @@
       }
       else {
       var groupID=document.getElementById("groupid").value;
+      content=window.encodeURI(content);
+      content=window.encodeURI(content);
       var url="chatsend?content="+content+"&groupID="+groupID;
       createRequest(url);
       document.getElementById("cid").value="";
@@ -73,32 +77,43 @@
 </script>
 </head>
 <body>
-
 	<div class="row">
 		<div class="col-md-12">
-			<h4 class="widget-title" style="font-size: 25px;font-weight: 600;margin-bottom:30px">我的团队</h4>
+			<h4 class="widget-title" style="font-size: 25px;margin-top:30px;font-weight: 600;margin-bottom:30px">我的团队
+			</h4>
 		</div>
 	</div>
-	<div>
-		<p>队伍名:<s:property value="#session.igroup.groupName"/></p>
+	<div><a href="employeeExitTeam" class="pull-right btn btn-s-md btn-danger btn-rounded">退出团队</a>
+		<h5 class="widget-title" style="font-size: 16px">队伍名：<s:property value="#session.igroup.groupName"/></h5>
 		<table>
-		<tr align="center"><th>成员名&nbsp;&nbsp;</th><th>成员用户名</th></tr>
-		<s:iterator value="teamMemberList">
-			<tr align="center">
-				<td><s:property value="employeeName"/></td>
-				<td><s:property value="employeeUserName"/></td>
-			</tr>
-		</s:iterator>
+		<tr><td class="widget-title" style="font-size: 15px;font-weight: 600;padding-top:10px;padding-bottom:10px">成员<br></td></tr>
+		<tr>
+			<s:iterator value="teamMemberList">
+				<td>&nbsp;&nbsp;<a class="pull-left thumb-sm avatar" ><img src='<s:property value="employeeIMG"/>' class="img-circle" alt="..."></a><br><br><s:property value="employeeName"/>&nbsp;&nbsp;</td>
+			</s:iterator>
+		</tr>
 		</table>
-		<a href="employeeExitTeam"><font color="red">退出当前队伍</font></a>
 	</div>
+	<br>
 	<div>
-	<hr/>
 	    <p><input type="hidden"  id="groupid" name="chatgroup" value="${sessionScope.groupID}" /></p>
-        <table border="1"><tr><td><iframe id="content" src="messageWindow.jsp" height="300px" width="80%"></iframe></td></tr></table>
-    <hr/>
-        <p><textarea name="content" onkeydown="dosend(event)" id="cid" rows="" cols="" style="width:100%"></textarea></p>
-        <p><input type="button" name="call" value="发送" onClick="callserver()" style="align:right"/></p>
+	    <iframe id="content" src="messageWindow.jsp" height="500px" width="100%"></iframe>
+	    <footer class="panel-footer">
+		<!-- chat form -->
+		<article class="chat-item" id="chat-form">
+			<a class="pull-left thumb-sm avatar"><img src='<s:property value="#session.employee.employeeIMG"/>' class="img-circle" alt="..."></a>
+			<section class="chat-body">
+			<form class="m-b-none">
+				<div class="input-group">
+					<input type="text" name="content" onkeydown="dosend(event)" id="cid" class="form-control" placeholder="Say something">
+					<span class="input-group-btn">
+						<input class="btn btn-default" type="button" name="call" value="发送" onClick="callserver()" />
+					</span>
+				</div>
+			</form>
+			</section>
+		</article>
+		</footer>
     </div>
 <script src="Employee/js/jquery.min.js"></script>
 </body>
