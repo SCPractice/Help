@@ -13,6 +13,7 @@
         <property name="startTime" type="java.util.Date"/>
         <property name="ifFinish" type="java.lang.Boolean"/>
         <property name="salary" type="java.lang.Double"/>
+        <property name="trueSalary" type="java.lang.Double"/>
         <property name="remark" type="java.lang.String" length="200"/>
         <property name="ifPay" type="java.lang.Boolean"/>
         <many-to-one name="employee" column="employeeID" class="cn.edu.zjut.po.Employee" cascade="all"/>

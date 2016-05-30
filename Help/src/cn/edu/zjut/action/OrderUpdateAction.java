@@ -1,6 +1,7 @@
 /*ÊÜ¹ÍÕß×¢²á¸¨ÖúAction*/
 package cn.edu.zjut.action;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -50,13 +51,24 @@ public class OrderUpdateAction {
 	public String merchantPay(){//Ö§¸¶¶©µ¥
 		Map session=ActionContext.getContext().getSession();
 		order=(Order) session.get("order");
-		System.out.println("OrderID="+order.getOrderID());
-		System.out.println("isIfPay="+order.isIfPay());
-		System.out.println("EmployeeName="+order.getEmployee().getEmployeeName());
-		if(orderUpdateController.pay(order)){
-			return "success";
+		
+//		System.out.println("OrderID="+order.getOrderID());
+//		System.out.println("isIfPay="+order.isIfPay());
+//		System.out.println("EmployeeName="+order.getEmployee().getEmployeeName());
+
+		double rate = orderUpdateController.findRate(order);
+		double trueSalary = rate*order.getSalary();
+		DecimalFormat df = new DecimalFormat("#.0");  
+        System.out.println(df.format(trueSalary));
+        double new_trueSalary = Double.parseDouble(df.format(trueSalary).toString());
+        System.out.println("double---------->"+Double.parseDouble(df.format(trueSalary).toString()));
+		if(new_trueSalary>0){
+			order.setTrueSalary(new_trueSalary);
+			if(orderUpdateController.pay(order)){
+				return "success";
+			}
 		}
-		else return "failed";
+		return "failed";
 	}
 	
 	public Employee getEmployee() {

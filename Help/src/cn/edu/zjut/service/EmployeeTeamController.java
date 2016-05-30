@@ -39,10 +39,6 @@ public class EmployeeTeamController implements IEmployeeTeamController {
 	
 	@Override
 	public boolean donate(Igroup group){
-		System.out.println("¾èÏ×....");
-//		System.out.println("groupName="+group.getGroupName());
-//		System.out.println("group id="+group.getGroupID());
-//		System.out.println("group pool="+group.getMoneyPool());
 		return groupDAO.merge(group);
 	}
 	

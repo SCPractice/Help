@@ -7,4 +7,5 @@ public interface IOrderUpdateController {
 	boolean accept(Order order, Employee employee);
 	boolean submit(Order order);
 	boolean pay(Order order);
+	double findRate(Order order);
 }

@@ -6,10 +6,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.hql.internal.ast.QuerySyntaxException;
+
 import com.opensymphony.xwork2.ActionContext;
+
 import cn.edu.zjut.po.*;
 
 public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
@@ -77,9 +81,14 @@ public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
 			String queryString = hql;
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
+		}catch(QuerySyntaxException qe){
+			System.out.println(qe.getMessage());
+			return null;
 		}catch (RuntimeException re) {
 			System.out.println(re);
-			System.out.println("finding failure");
+			return null;
+		}catch (Exception e) {
+			System.out.println(e);
 			return null;
 		}
 	}

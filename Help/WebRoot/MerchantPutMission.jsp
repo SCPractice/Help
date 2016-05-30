@@ -95,30 +95,27 @@ function check(){
 			
 			<fieldset class="col-md-4 col-sm-6">
 				<p>酬金：</p>
-				<input type="text" name="order.salary">
+				<input type="text" name="order.trueSalary" value=0 style="display:none">
+				<input type="text" name="order.salary" >
 				<s:property value="#session.order.salary" />
-				</input>
 			</fieldset>
 			
 			<fieldset class="col-md-4 col-sm-6">
 				<p>任务开始时间：</p>
 				<input type="datetime-local" name="startTimeString">
 				<s:property value="#session.startTimeString" />
-				</input>
 			</fieldset>
 			
 			<fieldset class="col-md-4 col-sm-6">
 				<p>任务结束时间：</p>
 				<input type="datetime-local" name="endTimeString">
 				<s:property value="#session.endTimeString" />
-				</input>
 			</fieldset>
 			
 			<fieldset class="col-md-4 col-sm-6">
 				<p>招募人数：</p>
 				<input type="text" name="number">
 				<s:property value="#session.number" />
-				</input>
 			</fieldset>
 			<div class="tip"><s:fielderror/></div>
 			<fieldset class="col-md-12 col-sm-12">

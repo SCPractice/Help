@@ -10,6 +10,7 @@ public class Order {
     private Date releaseTime;//商家 发布时间
     private Date acceptTime;//受雇者 接受时间
     private double salary;//报酬
+    private double trueSalary;//实际收到的工资
     private String remark;//备注
     private boolean ifFinish;//是否完成任务，若超时或其他原因皆为未完成，ifFinish=false
     private Date startTime;//任务开始时间
@@ -107,4 +108,12 @@ public class Order {
     public void setIfPay(boolean ifPay) {
         this.ifPay = ifPay;
     }
+
+	public double getTrueSalary() {
+		return trueSalary;
+	}
+
+	public void setTrueSalary(double trueSalary) {
+		this.trueSalary = trueSalary;
+	}
 }

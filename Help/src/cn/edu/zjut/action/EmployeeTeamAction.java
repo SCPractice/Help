@@ -43,7 +43,7 @@ public class EmployeeTeamAction extends ActionSupport {
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
 		double money = igroup.getTmpMoney();
-		System.out.println(money);
+		//System.out.println(money);
 		Igroup group= (Igroup)session.get("myGroup");
 		double newMoneyPool = money+group.getMoneyPool();
 		group.setMoneyPool(newMoneyPool);

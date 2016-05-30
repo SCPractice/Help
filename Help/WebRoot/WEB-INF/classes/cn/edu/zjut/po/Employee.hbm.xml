@@ -46,5 +46,8 @@
         <property name="employeeSignature" type="string">
             <column name="employeeSignature" length="100"/>
         </property>
+        <property name="pool" type="double">
+            <column name="pool"/>
+        </property>
     </class>
 </hibernate-mapping>
