@@ -14,7 +14,7 @@
         <title>招募信息</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+        <link rel="stylesheet" href="commonCSS/appNobg.css" type="text/css" />
         <link rel="stylesheet" href="Employee/css/normalize.css">
         <link rel="stylesheet" href="Employee/css/font-awesome.css">
         <link rel="stylesheet" href="Employee/css/bootstrap.min.css">
@@ -25,18 +25,22 @@
 		<link rel="stylesheet" type="text/css" href="Employee/windowcss/default.css" />
 		<link rel="stylesheet" type="text/css" href="Employee/windowcss/component.css" />
 		<script src="Employee/windowjs/modernizr.custom.js"></script>
-  		<script src="Employee/js/jquery-latest.min.js" type="text/javascript"></script>
 		<script src="Employee/js/chinaz.js"></script>
         <script src="Employee/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="commonJS/jquery.min.js"></script>
+	    <!-- Bootstrap -->
+	    <script src="commonJS/bootstrap.js"></script>
+	    <script src="commonJS/app.js"></script>
         <script>
         $(function(){
         	<%if(session.getAttribute("merchantinfo")!=null){%>
 				document.getElementById("seeInfo").click();
         	<%}%>
     	})
+
         </script>
 </head>
-<body>
+<body style="font-family: Microsoft JhengHei">
 <div class="page-section" id="about" >
 	<div class="row">
 		<div class="col-md-12">
@@ -95,12 +99,61 @@
     	<p>联   系   方  式：<%=object[6]%>
     	<input type="hidden" name="order.merchant.merchantID" value="<%=object[6]%>" />
         <input type="hidden" name="order.releaseTime" value="<%=object[1]%>" />
-    	<p><input type="submit" class="button" value="接受招募" /></p>
+    	<p>
+    	<input type="button" class="button" data-toggle="modal" data-target="#" value="接受招募" onClick="warning()"/>
+    	<input type="submit" id="submitButton" style="display:none" class="button" value="接受招募" />
+    	<!-- 打开模态框 -->
+    	<input type="button" style="display:none" id="open" data-toggle="modal" data-target="#<%=start %>" />
+    	</p>
         </s:form>
 	</div>
 	</div>
 	</div>
 	</div>
+	<script>
+	function warning(){
+    	<% Employee employee = (Employee) session.getAttribute("employee");%>
+    	<%if(employee.getPool()<=0.2){//资金不足%>
+    		var elementID = <%=start %>;
+    		//alert(elementID);
+			document.getElementById("open").click();
+        <%}
+        else{%>
+        	document.getElementById("submitButton").click();
+        <%}%>
+    }
+	</script>
+			<!-- 模态框 -->
+			<div class="modal fade" id="<%=start %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:125px">  
+			  <div class="modal-dialog">  
+			  	<form class="form-horizontal" action="payPromise" method="post">
+			  	<% session.setAttribute("myInfo", employee); %>
+			    <div class="modal-content">  
+			      <div class="modal-header">  
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+			        <label class="modal-title" style="color:#373737;">保证金抵押</label>  
+			        <h6 class="modal-title" style="color:#f46151;font-size:14px;font-weight:500px">
+			        	平台上的保证金不足，不能接受招募<br>
+			        	请先存放一定金额的保证金到平台上
+			        </h6>  
+			      </div>  
+			      <div class="modal-body">  
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" style="color:#373737">金额</label>
+                      <div class="col-sm-6">
+                      	<input type="text" name="employee.pool" class="form-control"/>
+                      </div>
+                    </div>
+			      </div>  
+			      <div class="modal-footer">  
+			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>  
+			        <button type="submit" class="btn btn-primary" style="background-color:#f46151; border-color:#f46151">确认存放</button>  
+			      </div>  
+			    </div><!-- /.modal-content -->  
+				</form>
+				</div>
+			  </div><!-- /.modal-dialog -->  
+	
 	<%  
         }while(start<list.size());    
     }
@@ -154,6 +207,9 @@
 		</script>
 		<script src="Employee/windowjs/cssParser.js"></script>
 		<script src="Employee/windowjs/css-filters-polyfill.js"></script>
+
+			
+
 
 </body>
 </html>

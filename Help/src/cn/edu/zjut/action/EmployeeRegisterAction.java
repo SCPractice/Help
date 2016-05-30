@@ -40,6 +40,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 			e.printStackTrace();
 		}
 		employee.setEmployeePassword(securePassword);
+		employee.setPool(0);
 		if(employeeRegisterController.register(employee) &&
 				employeeRegisterController.uploadidface(employee) &&
 				employeeRegisterController.uploadidback(employee)){

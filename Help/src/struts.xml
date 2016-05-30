@@ -11,6 +11,11 @@
 			<result name="updatesuccess" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="updatefailed" type="redirect">/EmployeeIndex.jsp</result>
 		</action>
+		<!-- 存放保证金 -->
+		<action name="payPromise" class="employeeUpdateAction" method="payPromise">
+			<result name="succeed" type="redirect">/findMission.jsp</result>
+			<result name="failed" type="redirect">/error.jsp</result>
+		</action>
 		<action name="EmployeeRegister" class="employeeRegisterAction" method="register">
 			<result name="registersuccess">/EmployeeRegisterPersonal.jsp</result>
 			<result name="input">/EmployeeRegisterBasic.jsp</result>

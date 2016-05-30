@@ -49,9 +49,9 @@ public class EmployeeFundsController implements IEmployeeFundsController{
 				e.printStackTrace();
 			}
 			oldDay = formatter.format(oldTime).substring(0, 10);
-			String hql1="select sum(salary),order.endTime from Order as order where order.employee.employeeID='"
+			String hql1="select sum(trueSalary),order.endTime from Order as order where order.employee.employeeID='"
 					+employee.getEmployeeID()+"'"
-					+" and order.ifFinish='1'"
+					+" and order.ifFinish='1' and order.ifPay='1' "
 					+" and date(endTime)='"+oldDay+"'";	//查询前i天获得的报酬
 			List tmpSalaryList=employeeDAO.findByHQL(hql1);
 			if(!tmpSalaryList.isEmpty()){
@@ -67,8 +67,9 @@ public class EmployeeFundsController implements IEmployeeFundsController{
 		}
 		session.put("salaryList", salaryList);
 		//查询总资产
-		String hql2="select sum(salary) from Order as order where order.employee.employeeID='"+employee.getEmployeeID()+"'"
-				+"and order.ifFinish='1'";
+		String hql2="select sum(trueSalary) from Order as order where order.employee.employeeID='"+employee.getEmployeeID()+"'"
+				+"and order.ifFinish='1' "
+				+ "and order.ifPay='1'";
 		List salaryList2=employeeDAO.findByHQL(hql2);
 		if(!salaryList2.isEmpty()){
 			if(salaryList2.get(0)!=null){

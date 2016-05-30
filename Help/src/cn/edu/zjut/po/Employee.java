@@ -26,6 +26,8 @@ public class Employee {
 	private int agreement;//阅读同意
 	private String groupID;//所加入的小组的ID
 	private Igroup group;//所加入的小组
+	private double pool=0;//暂存在平台上的资金
+	
 	//以下是各属性的get和set方法
 	public String getEmployeeID() {
 		return employeeID;
@@ -140,5 +142,11 @@ public class Employee {
 	}
 	public void setGroupID(String groupID) {
 		this.groupID = groupID;
+	}
+	public double getPool() {
+		return pool;
+	}
+	public void setPool(double pool) {
+		this.pool = pool;
 	}
 }
