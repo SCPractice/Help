@@ -39,8 +39,8 @@ int pageCount=1;
 		</div>
 		<div id='cssmenu'>
 			<ul>
-				<li><a href='findPayedOrder'>已支付的订单</a></li>
 				<li><a href='findUnpayedOrder'>未支付的订单</a></li>
+				<li><a href='findPayedOrder'>已支付的订单</a></li>
 			</ul>
 		</div>
 		 <div class="row projects-holder">
@@ -98,7 +98,7 @@ int pageCount=1;
 							<%
 							if(!ifPay) {
 							%>
-							    <button class="payButton" href="#">支付</button>
+							    <button class="payButton" href="#" data-toggle="modal" data-target="#<%=start%>">支付</button>
 							<% 
 							}
 							%>
@@ -106,6 +106,31 @@ int pageCount=1;
 					</div>
 				</div>
 			</div>
+			
+			<div class="modal fade" id="<%=start%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+			  <div class="modal-dialog">  
+			  	<form action="MerchantPay" method="post">
+			    <div class="modal-content">  
+			      <div class="modal-header">  
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+			        <h4 class="modal-title">确认支付</h4>  
+			      </div>  
+			      
+			      <div class="modal-body">  
+			        <p>您将要发起一份金额为 &nbsp;&nbsp;<%=salary %>元&nbsp;&nbsp;的支付订单</p>
+			        <%session.setAttribute("order", order); %>
+			        <input type="text" name="merchant.ifPay" value="true" style="display:none"> 
+			        <input type="text" name="merchant.orderID" value="<%=orderID%>" style="display:none">
+			       	<p>支付金额将打给名为&nbsp;&nbsp;<%=Username %>&nbsp;&nbsp;的用户</p>
+			      </div>  
+			      <div class="modal-footer">  
+			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>  
+			        <button type="submit" class="btn btn-primary" >确认支付</button>  
+			      </div>  
+			    </div><!-- /.modal-content -->  
+			    </form>
+			  </div><!-- /.modal-dialog -->  
+			</div><!-- /.modal --> 
 			<%  
         }  
         }
@@ -116,10 +141,8 @@ int pageCount=1;
     }  
     }
 %>
+</div>
 
-
-		</div>
-	</div>
 <div class="dividePage">
 
 			<a href="MerchantPay.jsp?curPage=1">首页</a> <a
@@ -128,5 +151,7 @@ int pageCount=1;
 				href="MerchantPay.jsp?curPage=<%=pageCount%>">尾页</a> 
 				第<%=curPage%>页/共<%=pageCount%>页
 </div>
+<script src="commonJS/bootstrap.js"></script>
+<script src="commonJS/jquery.min.js"></script>
 </body>
 </html>

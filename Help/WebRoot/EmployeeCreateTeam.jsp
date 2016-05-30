@@ -32,6 +32,9 @@
                       <label class="col-sm-2 control-label">队伍名</label>
                       <div class="col-sm-6">
                       	<input type="text" name="igroup.groupName" class="form-control"/>                    
+                      	<input type="text" name="igroup.moneyPool" value=0 class="form-control" style="display:none"/>
+                      	<input type="text" name="igroup.poolFull" value=500 class="form-control" style="display:none"/>
+                      	<input type="text" name="igroup.rate" value=1.1 class="form-control" style="display:none"/>
                       </div>
                     </div>
                     <div class="line line-dashed b-b line-lg pull-in"></div>

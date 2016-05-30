@@ -93,7 +93,26 @@ public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
 			osession.update(order);
 			tran.commit();
 			session.put("order", order);
-			System.out.println(order.getStartTime());
+			osession.close();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println(e);
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean merge(Order order) { //更新
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.get("session");
+		Transaction tran=null;
+		Session osession=getSession();
+		try{
+			tran = osession.beginTransaction();
+			osession.merge(order);
+			tran.commit();
+			session.put("order", order);
 			osession.close();
 		}catch(Exception e){
 			e.printStackTrace();

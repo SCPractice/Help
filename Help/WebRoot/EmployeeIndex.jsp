@@ -146,10 +146,10 @@
 							class="fa fa-history"></i>历史任务</a></li>
 					<li><a href="#fund" onclick="showDiv('fund')"><i
 							class="fa fa-yen"></i>我的资产</a></li>
-					<li><a href="#contact" onclick="showDiv('contact')"><i
-							class="fa fa-cog"></i>个人信息</a></li>
 					<li><a href="#team" onclick="showDiv('team')"><i
 							class="fa fa-flag"></i>我的团队</a></li>
+					<li><a href="#contact" onclick="showDiv('contact')"><i
+							class="fa fa-cog"></i>个人信息</a></li>	
 				</ul>
 			</div>
 		</div>
@@ -212,10 +212,10 @@
 						class="fa fa-history"></i>历史任务</a></li>
 				<li><a href="#fund" onclick="showDiv('fund')"><i
 						class="fa fa-yen"></i>我的资产</a></li>
-				<li><a href="#contact" onclick="showDiv('contact')"><i
-						class="fa fa-cog"></i>个人信息</a></li>
 				<li><a href="#team" onclick="showDiv('team')"><i
 						class="fa fa-flag"></i>我的团队</a></li>
+				<li><a href="#contact" onclick="showDiv('contact')"><i
+						class="fa fa-cog"></i>个人信息</a></li>
 			</ul>
 		</div>
 		<!-- .main-navigation -->
@@ -342,7 +342,7 @@
 				
 				<!-- 我的团队 -->
 				<div id="team" style="display:none">
-					<iframe id="team" src="findTeam" height="840px" width="100%"></iframe>
+					<iframe id="team" src="findTeam" height="890px" width="100%"></iframe>
 				</div>	
 				
 				<div class="row" id="footer">

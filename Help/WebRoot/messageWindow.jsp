@@ -15,7 +15,7 @@
     
     var xmlHttp = false;
     
-    setInterval(create,1000);
+    setInterval(create,10000);
     function create(){
     try {
     xmlHttp = new XMLHttpRequest();
@@ -83,7 +83,7 @@
     }
 </script>
 <body>
-<div class="row">
+<div class="row" style="font-family: Microsoft JhengHei;">
 	<div class="col-lg-12">
 		<section class="panel panel-default">
 			<header class="panel-heading">团队聊天窗口</header>

@@ -25,4 +25,10 @@ public class OrderUpdateController implements IOrderUpdateController{
 		if(orderDAO.update(order)) return true;
 		return false;
 	}
+	public boolean pay(Order order) { //支付任务工资
+		order.setIfPay(true);
+		order.setIfFinish(true);
+		if(orderDAO.merge(order)) return true;
+		return false;
+	}
 }
