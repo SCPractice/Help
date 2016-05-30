@@ -7,7 +7,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 
+
 import cn.edu.zjut.po.Employee;
+import cn.edu.zjut.po.Igroup;
 import cn.edu.zjut.service.EmployeeTeamController;
 
 public class EmployeeTeamAction extends ActionSupport {
@@ -16,6 +18,7 @@ public class EmployeeTeamAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Employee employee;
+	private Igroup igroup;
 	private EmployeeTeamController employeeTeamsController;
 	private List teamMemberList;
 	private Map<String,Object> session;
@@ -34,6 +37,21 @@ public class EmployeeTeamAction extends ActionSupport {
 		    return "teamfound";
 		}
 		else return "teamnotfound";
+	}
+	
+	public String donate(){//¾èÏ×
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		double money = igroup.getTmpMoney();
+		System.out.println(money);
+		Igroup group= (Igroup)session.get("myGroup");
+		double newMoneyPool = money+group.getMoneyPool();
+		group.setMoneyPool(newMoneyPool);
+		
+		if(newMoneyPool<=group.getPoolFull() && employeeTeamsController.donate(group)){
+			return "succeed";
+		}
+		else return "failed";
 	}
 	
 	public String employeeExitTeam(){
@@ -77,6 +95,14 @@ public class EmployeeTeamAction extends ActionSupport {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public Igroup getIgroup() {
+		return igroup;
+	}
+
+	public void setIgroup(Igroup igroup) {
+		this.igroup = igroup;
 	}
 	
 	

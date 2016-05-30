@@ -16,5 +16,14 @@
 		<property name="createTime" type="java.util.Date">
 			<column name="createTime" />
 		</property>
+		<property name="moneyPool" type="double">
+			<column name="moneyPool" />
+		</property>
+		<property name="poolFull" type="double">
+			<column name="poolFull" />
+		</property>
+		<property name="rate" type="double">
+			<column name="rate" />
+		</property>
 	</class>
 </hibernate-mapping>

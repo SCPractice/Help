@@ -9,9 +9,11 @@ import com.opensymphony.xwork2.ActionContext;
 import cn.edu.zjut.dao.EmployeeDAO;
 import cn.edu.zjut.dao.GroupDAO;
 import cn.edu.zjut.po.Employee;
+import cn.edu.zjut.po.Igroup;
 
 public class EmployeeTeamController implements IEmployeeTeamController {
 	private EmployeeDAO employeeDAO;
+	private GroupDAO groupDAO;
 	
 	private Map<String, Object> session;
 	public List findTeam() {
@@ -26,7 +28,24 @@ public class EmployeeTeamController implements IEmployeeTeamController {
 	public void setEmployeeDAO(EmployeeDAO employeeDAO) {
 		this.employeeDAO = employeeDAO;
 	}
-
+	
+	public GroupDAO getGroupDAO() {
+		return groupDAO;
+	}
+	public void setGroupDAO(GroupDAO groupDAO) {
+		this.groupDAO = groupDAO;
+	}
+	
+	
+	@Override
+	public boolean donate(Igroup group){
+		System.out.println("¾èÏ×....");
+//		System.out.println("groupName="+group.getGroupName());
+//		System.out.println("group id="+group.getGroupID());
+//		System.out.println("group pool="+group.getMoneyPool());
+		return groupDAO.merge(group);
+	}
+	
 	@Override
 	public boolean updateIgroupID() {
 		// TODO Auto-generated method stub

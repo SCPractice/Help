@@ -74,7 +74,7 @@ function check(){
 				value="%{#session.merchant.merchantIMG}" />
 			<!-- 头像 -->
 			<s:property value="#request.updateTip" />
-			<fieldset class="col-md-4 col-sm-6">
+			<fieldset class="col-md-4 col-sm-6" style="display:none">
 				<p>我的昵称：</p>
 				<input type="text" name="merchant.merchantUsername"
 					value="<s:property value="#session.merchant.merchantUsername"/>"
@@ -87,7 +87,7 @@ function check(){
 					readonly />
 			</fieldset>
 			
-			<fieldset class="col-md-4 col-sm-6">
+			<fieldset class="col-md-4 col-sm-6" style="display:none">
 				<p>用户名：</p>
 				<input type="text" name="merchant.merchantID"
 					value="<s:property value="#session.merchant.merchantID"/>" readonly />

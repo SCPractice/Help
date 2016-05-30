@@ -11,6 +11,7 @@ public interface IOrderDAO {
 	@SuppressWarnings("rawtypes")
 	List findByHql(String hql);
 	boolean update(Order order);
+	boolean merge(Order order);
 	boolean save(Order order);
 	List findALL();
     List findUnfinished(Merchant merchant);//查询未完成的任务

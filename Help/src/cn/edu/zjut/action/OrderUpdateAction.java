@@ -45,6 +45,20 @@ public class OrderUpdateAction {
 		}
 		else return "failed";
 	}
+	
+	@SuppressWarnings({ "rawtypes" })
+	public String merchantPay(){//Ö§¸¶¶©µ¥
+		Map session=ActionContext.getContext().getSession();
+		order=(Order) session.get("order");
+		System.out.println("OrderID="+order.getOrderID());
+		System.out.println("isIfPay="+order.isIfPay());
+		System.out.println("EmployeeName="+order.getEmployee().getEmployeeName());
+		if(orderUpdateController.pay(order)){
+			return "success";
+		}
+		else return "failed";
+	}
+	
 	public Employee getEmployee() {
 		return employee;
 	}

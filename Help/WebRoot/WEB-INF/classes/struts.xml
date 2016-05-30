@@ -20,6 +20,11 @@
 			<result name="updatesuccess">/EmployeeRegisterSuccess.jsp</result>
 			<result name="updatefailed">/EmployeeRegisterPersonal.jsp</result>
 		</action>
+		<!-- 共享池捐献 -->
+		<action name="donate" class="employeeTeamAction" method="donate">
+			<result name="succeed" >/EmployeeTeam.jsp</result>
+			<result name="failed" >/EmployeeTeam.jsp</result>
+		</action>
 		
 		<!-- 商家登录 -->
 		<action name="MerchantLogin" class="merchantLoginAction"
@@ -115,6 +120,12 @@
 			<result name="success">/EmployeeIndex.jsp</result>
 			<result name="failed">/error.jsp</result>
 		</action>
+		<!-- 商家支付订单 -->
+		<action name="MerchantPay" class="orderUpdateAction" method="merchantPay">
+			<result name="success">/MerchantPay.jsp</result>
+			<result name="failed">/error.jsp</result>
+		</action>
+		
 		<action name="OrderByDefault" class="orderDisplayAction" method="bydefault">
 			<result name="success">/findMission.jsp</result>
 			<result name="failed">/findMission.jsp</result>

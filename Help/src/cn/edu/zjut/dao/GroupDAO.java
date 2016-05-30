@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import cn.edu.zjut.po.Employee;
 import cn.edu.zjut.po.Igroup;
 
 public class GroupDAO extends BaseHibernateDAO implements IGroupDAO,IIgroupDAO{
@@ -59,6 +60,26 @@ public class GroupDAO extends BaseHibernateDAO implements IGroupDAO,IIgroupDAO{
 		
 	}
 	
-	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public boolean merge(Igroup group) {//group更新
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		//request=(Map) ctx.get("request");
+		Transaction tran = null;
+		Session esession = null;
+		try {
+			esession = getSession();
+			tran = esession.beginTransaction();
+			esession.merge(group);
+			tran.commit();
+			//request.put("donateTip", "捐献成功！");
+			session.put("igroup", group);
+		} catch (RuntimeException re) {
+			return false;
+		} finally {
+			getSession().close();
+		}
+		return true;
+	}
 	
 }
