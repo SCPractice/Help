@@ -28,6 +28,7 @@ public class MerchantRegisterAction extends ActionSupport{
 
 	public void setMerchantRegisterController(IMerchantRegisterController merchantRegisterController) {
 		this.merchantRegisterController = merchantRegisterController;
+		
 	}
 
 	public String register() {
