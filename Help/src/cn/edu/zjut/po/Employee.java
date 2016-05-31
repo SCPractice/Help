@@ -21,10 +21,13 @@ public class Employee {
 	private boolean employeeState;//审核状态0 or 1
 	private String employeeIMG;//头像
 	private String employeeSignature;//个性签名
+	private File face;//身份证正面
+	private File back;//身份证背面
 	private int agreement;//阅读同意
 	private String groupID;//所加入的小组的ID
 	private Igroup group;//所加入的小组
-	private String employeeFace;//证件照
+	private double pool=0;//暂存在平台上的资金
+	
 	//以下是各属性的get和set方法
 	public String getEmployeeID() {
 		return employeeID;
@@ -104,13 +107,24 @@ public class Employee {
 	public void setEmployeeSignature(String employeeSignature) {
 		this.employeeSignature = employeeSignature;
 	}
+	public File getFace() {
+		return face;
+	}
+	public void setFace(File face) {
+		this.face = face;
+	}
+	public File getBack() {
+		return back;
+	}
+	public void setBack(File back) {
+		this.back = back;
+	}
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
 	public int getAgreement() {
 		return agreement;
 	}
@@ -129,10 +143,10 @@ public class Employee {
 	public void setGroupID(String groupID) {
 		this.groupID = groupID;
 	}
-	public String getEmployeeFace() {
-		return employeeFace;
+	public double getPool() {
+		return pool;
 	}
-	public void setEmployeeFace(String employeeFace) {
-		this.employeeFace = employeeFace;
+	public void setPool(double pool) {
+		this.pool = pool;
 	}
 }

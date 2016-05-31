@@ -21,7 +21,9 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean register(Employee employee) {//注册
-		System.out.println("-----EmployeeRegisterDao-----");
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		request=(Map) ctx.get("request");
 		Transaction tran = null;
 		Session esession = null; 
 		try {
@@ -29,14 +31,13 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			tran = esession.beginTransaction();
 			esession.save(employee);
 			tran.commit();
-		} 
-		catch (RuntimeException re)
-		{
-			if(tran != null) 
-				tran.rollback();
+			session.put("employee", employee);
+			request.put("tip", "注册成功");
+		} catch (RuntimeException re) {
+			if(tran != null) tran.rollback();
+			System.out.println("注册失败！");
 			return false;
-		} finally 
-		{
+		} finally {
 			getSession().close();
 		}
 		return true;
@@ -44,6 +45,9 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean update(Employee employee) {//受雇者信息更新
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		request=(Map) ctx.get("request");
 		Transaction tran = null;
 		Session esession = null;
 		try {
@@ -51,7 +55,8 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			tran = esession.beginTransaction();
 			esession.update(employee);
 			tran.commit();
-			
+			request.put("updateTip", "信息修改成功！");
+			session.put("employee", employee);
 		} catch (RuntimeException re) {
 			return false;
 		} finally {
@@ -115,15 +120,18 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		return true;
 	}
 
+	@SuppressWarnings("finally")
 	public List findByHQL(String hql){//根据HQL语句查询
+		Query queryObject=null;
 		try {
 			String queryString = hql;
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
+			queryObject = getSession().createQuery(queryString);
+			
 		} catch (RuntimeException re) {
 			throw re;
 		} finally{
 			getSession().close();
+			return queryObject.list();
 		}
 	}
 	
@@ -147,16 +155,12 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		Employee employee=(Employee) session.get("employee");
 		String employeeID=employee.getEmployeeID();
 		List list=null;
-		System.out.println("employeeID");
 		if(employee.getGroup()==null){
-			//session.put("igroup",igroup);
 			return null;
 		}else{
 			try{
 				Igroup igroup=employee.getGroup();
 				session.put("igroup",igroup);
-				System.out.println(igroup);
-				System.out.println(employee.getGroup());
 				String hqll="from Employee as emp where emp.group='"+igroup.getGroupID()+"'";
 				Query queryObject = getSession().createQuery(hqll);
 				list=queryObject.list();
@@ -201,7 +205,6 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		// TODO Auto-generated method stub
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
-		int flag=(Integer) session.get("flag");
 		Employee employee=(Employee) session.get("employee");
 		Igroup igroup=(Igroup) session.get("igroup");
 		Session esession = getSession();
@@ -230,34 +233,5 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			esession.close();
 		}
 		return true;
-	}
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean changeSate(String ID){
-		ActionContext ctx= ActionContext.getContext();
-		session=(Map) ctx.getSession();
-		request=(Map) ctx.get("request");
-	
-		String hql = "from Employee as emp where employeeID='" + ID+ "'";
-		try {
-			String queryString = hql;
-			Query queryObject = getSession().createQuery(queryString);
-			List list=queryObject.list();
-			if (!list.isEmpty()){
-				Employee employee=(Employee)list.get(0);
-				employee.setEmployeeState(true);
-				if(update(employee)){
-					System.out.println("审核通过！");
-					return true;
-				}
-			}
-		}catch (RuntimeException re) {
-			System.out.println(re);
-			request.put("tip", "注册失败，服务器发生异常");
-			System.out.println("审核未通过！");
-			return false;
-		}
-		getSession().close();
-		return true;
-		
 	}
 }

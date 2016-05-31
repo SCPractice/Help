@@ -1,200 +1,219 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
-<struts>
-	<package name="strutsBean" extends="struts-default" namespace="/">
-	    
-	    <!-- 受雇者登陆 -->
-		<action name="EmployeeLogin" class="employeeLoginAction" method="login">
-			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
-			<result name="loginfailed">/EmployeeLogin.jsp</result>
-			<result name="input">/EmployeeLogin.jsp</result>
-		</action>
-		
-		<!-- 受雇者更新个人信息 -->
-		<action name="EmployeeUpdated" class="employeeUpdateAction" method="update">
-			<result name="updatesuccess" type="redirect">/EmployeeIndex.jsp</result>
-			<result name="updatefailed" type="redirect">/EmployeeIndex.jsp</result>
-		</action>
-		
-		<!-- 受雇者注册 -->
-		<action name="EmployeeRegister" class="employeeRegisterAction" method="register">
-			<result name="registersuccess">/EmployeeRegisterPersonal.jsp</result>
-			<result name="input">/EmployeeRegisterBasic.jsp</result>
-			<result name="registerfailed">/EmployeeRegisterBasic.jsp</result>
-		</action>
-		
-		<!-- 受雇者完善个人信息 -->
-		<action name="EmployeeRegisterUpdate" class="employeeUpdateAction" method="registerUpdate">
-			<result name="updatesuccess">/EmployeeRegisterSuccess.jsp</result>
-			<result name="updatefailed">/EmployeeRegisterPersonal.jsp</result>
-		</action>
-		
-		<!-- 受雇者自动校验 -->
-		<action name="EmployeeCheck" class="employeeUpdateAction" method="check">
-			<result name="success">/EmployeeCheckedSuccess.jsp</result>
-			<result name="failed">/EmployeeCheckedPersonal.jsp</result>
-		</action>
-		
-				<!-- 受雇者人脸登录 -->
-		<action name="EmployeeFace" class="employeeFaceLoginAction" method="face">
-			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
-			<result name="loginfailed">/EmployeeLogin.jsp</result>
-			<result name="input">/EmployeeLogin.jsp</result>
-		</action>
-		<!-- 商家登录 -->
-		<action name="MerchantLogin" class="merchantLoginAction"
-			method="login">
-			<result name="loginsuccess" type="redirect">/MerchantIndex.jsp</result>
-			<result name="loginfailed">/MerchantLogin.jsp</result>
-			<result name="input">/MerchantLogin.jsp</result>
-		</action>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	
+	<!-- 聊天 -->
+	<bean id="sendAction" class="cn.edu.zjut.action.SendAction">
+	    <property name="chatController" ref="chatController"/>
+	</bean>
+	<bean id="receiveAction" class="cn.edu.zjut.action.ReceiveAction">
+	    <property name="chatController" ref="chatController"/>
+	</bean>
+	<bean id="chatGroupAction" class="cn.edu.zjut.action.ChatGroupAction">
+	    <property name="chatGroupController" ref="chatGroupController"/>
+	</bean>
+	<bean id="chatController" class="cn.edu.zjut.service.ChatController">
+	    <property name="chatDAO" ref="chatDAO" />
+	</bean>
+	<bean id="chatGroupController" class="cn.edu.zjut.service.ChatGroupController">
+	    <property name="chatGroupDAO" ref="chatGroupDAO"/>
+	</bean>
+	<bean id="chatDAO" class="cn.edu.zjut.dao.ChatDAO" parent="baseDAO"/>
+	<bean id="chatGroupDAO" class="cn.edu.zjut.dao.ChatGroupDAO" parent="baseDAO"/>
+	<!-- 招募任务-->
+	<bean id="employeeHistoryAction" class="cn.edu.zjut.action.EmployeeHistoryAction" scope="prototype">
+		<property name="employeeHistoryController" ref="employeeHistoryController"/>
+	</bean>
+	
+	<bean id="employeeHistoryController" class="cn.edu.zjut.service.EmployeeHistoryController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<bean id="orderUpdateController" class="cn.edu.zjut.service.OrderUpdateController">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+	
+	<bean id="orderDisplayController" class="cn.edu.zjut.service.OrderDisplayController">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+	
+	<bean id="orderDAO" class="cn.edu.zjut.dao.OrderDAO" parent="baseDAO"/>
+	
+	<bean id="orderUpdateAction" class="cn.edu.zjut.action.OrderUpdateAction" scope="prototype">
+		<property name="orderUpdateController" ref="orderUpdateController" />
+	</bean>
+	
+	<bean id="orderDisplayAction" class="cn.edu.zjut.action.OrderDisplayAction" scope="prototype">
+		<property name="orderDisplayController" ref="orderDisplayController" />
+	</bean>
+	
+	
+	<bean id="employeeLoginController" class="cn.edu.zjut.service.EmployeeLoginController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<!-- 计算资产service -->
+	<bean id="employeeFundsController" class="cn.edu.zjut.service.EmployeeFundsController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	<!-- 受雇者注册 -->
+	<bean id="employeeRegisterController" class="cn.edu.zjut.service.EmployeeRegisterController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<bean id="baseDAO" class="cn.edu.zjut.dao.BaseHibernateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="employeeDAO" class="cn.edu.zjut.dao.EmployeeDAO" parent="baseDAO"/>
+	<!-- 登录 action -->
+	<bean id="employeeLoginAction" class="cn.edu.zjut.action.EmployeeLoginAction" scope="prototype">
+		<property name="employeeLoginController" ref="employeeLoginController" />
+	</bean>
+	<!-- 注册 action -->
+	<bean id="employeeRegisterAction" class="cn.edu.zjut.action.EmployeeRegisterAction" scope="prototype">
+		<property name="employeeRegisterController" ref="employeeRegisterController" />
+	</bean>
+	<!-- 计算资产 action -->
+	<bean id="employeeFundsAction" class="cn.edu.zjut.action.EmployeeFundsAction" scope="prototype">
+		<property name="employeeFundsController" ref="employeeFundsController" />
+	</bean>
+	<!-- 更新 action -->
+	<bean id="employeeUpdateAction" class="cn.edu.zjut.action.EmployeeUpdateAction" scope="prototype">
+		<property name="employeeRegisterController" ref="employeeRegisterController" />
+	</bean>
+	<!-- 上传头像action -->
+	<bean id="employeeUploadAction" class="cn.edu.zjut.action.EmployeeUploadAction" scope="prototype">
+	</bean>
+	
+	<!-- 商家DAO -->
+	<bean id="merchantDAO" class="cn.edu.zjut.dao.MerchantDAO" parent="baseDAO" />
+	
+	<!-- 商家登录service -->
+	<bean id="merchantLoginController" class="cn.edu.zjut.service.MerchantLoginController">
+		<property name="merchantDAO" ref="merchantDAO" />
+	</bean>
+	
+	<!-- 商家註冊service -->
+	 <bean id="merchantRegisterController" class="cn.edu.zjut.service.MerchantRegisterController" >
+        <property name="merchantDAO" ref="merchantDAO"/>
+    </bean>
+    
+    <!-- 商家注册action -->
+    <bean id="merchantRegisterAction" class="cn.edu.zjut.action.MerchantRegisterAction" scope="prototype">
+        <property name="merchantRegisterController" ref="merchantRegisterController"/>
+    </bean>
+    
+    <!-- 商家更新action -->
+    <bean id="merchantUpdateAction" class="cn.edu.zjut.action.MerchantUpdateAction" scope="prototype">
+        <property name="merchantRegisterController" ref="merchantRegisterController"/>
+    </bean>
+    
+    <!-- 商家上傳照片action -->
+    <bean id="merchantUploadAction" class="cn.edu.zjut.action.MerchantUploadAction" scope="prototype">
+	</bean>
 
-		<!-- 商家注册 -->
-		<action name="MerchantRegister" class="merchantRegisterAction"
-			method="register">
-			<result name="regSUCCESS">/MerchantRegisterPersonal.jsp</result>
-			<result name="regFAILED">/MerchantRegisterBasic.jsp</result>
-			<result name="input">/MerchantRegisterBasic.jsp</result>
-		</action>
+    <!-- 商家登录action -->
+    <bean id="merchantLoginAction" class="cn.edu.zjut.action.MerchantLoginAction" scope="prototype">
+		<property name="merchantLoginController" ref="merchantLoginController" />
+	</bean>
+	
+	<!-- 订单发布service -->
+	<bean id="merchantOrderController" class="cn.edu.zjut.service.MerchantOrderController">
+        <property name="orderDAO" ref="orderDAO"/>
+    </bean>
 
-		<!-- 商家注册上传图片更新 -->
-		<action name="MerchantRegisterUpdate" class="merchantUpdateAction"
-			method="registerupdate">
-			<result name="success">/MerchantRegisterSuccess.jsp
-			</result>
-			<result name="failed">/MerchantRegisterPersonal.jsp
-			</result>
-		</action>
-		
-		<!--  商家更新界面 -->
-		<action name="MerchantUpdate" class="merchantUpdateAction"
-			method="update">
-			<result name="updatesuccess" type="redirect">/MerchantIndex.jsp</result>
-			<result name="updatefailed">/MerchantIndex.jsp</result>
-			<!-- <result name="input">/MerchantIndex.jsp</result> -->
-		</action>
-		
-		<!-- 商家上传图片 -->
-		<action name="merchantUploadIMG" class="merchantUploadAction" method="upload">
-			<result name="success">/MerchantRegisterPersonal.jsp</result>
-			<result name="failed">/MerchantRegisterPersonal.jsp</result>
-		</action>
-		
-		<!-- 商家裁剪图片 -->
-		<action name="merchantZoomImage" class="merchantUploadAction" method="zoom">
-			<result name="success">/MerchantRegisterPersonal.jsp</result>
-			<result name="failed">/MerchantRegisterPersonal.jsp</result>
-		</action>
-		
-		<!-- 订单发布 -->
-		<action name="merchantReleaseOrder" class="merchantReleaseOrderAction" method="releaseOrder">
-            <result name="success">/PutSuccess.jsp</result>
-            <result name="error">/PutFailed.jsp</result>
-            <result name="input">/MerchantPutMission.jsp</result>
-        </action>
-		
-		<!-- 返回未完成订单 -->
-        <action name="findUnfinishedOrder" class="merchantOrderFindByFinishAction" method="findUnfinishedOrder">
-            <result name="success">/MerchantHistoryMission.jsp</result>
-            <result name="error">/MerchantFindHistoryMissionFailed.jsp</result>
-        </action>
+    <!-- 订单发布action -->
+    <bean id="merchantReleaseOrderAction" class="cn.edu.zjut.action.MerchantOrderAction" scope="prototype">
+        <property name="orderReleaseController" ref="merchantOrderController"/>
+    </bean>
 
-        <!-- 返回完成订单 -->
-        <action name="findFinishedOrder" class="merchantOrderFindByFinishAction" method="findFinishedOrder">
-            <result name="success">/MerchantHistoryMission.jsp</result>
-            <result name="error">/MerchantFindHistoryMissionFailed.jsp</result>
-        </action>
-        
-        <action name="findPayedOrder" class="merchantOrderFindByPayAction" method="findPayedOrder">
-            <result name="success">/MerchantPay.jsp</result>
-            <result name="error">/MerchantPay.jsp</result>
-        </action>
-        
-        <action name="findUnpayedOrder" class="merchantOrderFindByPayAction" method="findUnpayedOrder">
-            <result name="success">/MerchantPay.jsp</result>
-            <result name="error">/MerchantPay.jsp</result>
-        </action>
-		<action name="UploadIMG" class="employeeUploadAction" method="upload">
-			<result name="success">/EmployeeRegisterPersonal.jsp</result>
-			<result name="failed">/EmployeeRegisterPersonal.jsp</result>
-		</action>
-		<action name="ZoomImage" class="employeeUploadAction" method="zoom">
-			<result name="success">/EmployeeRegisterPersonal.jsp</result>
-			<result name="failed">/EmployeeRegisterPersonal.jsp</result>
-		</action>
-		<action name="calculateMyFunds" class="employeeFundsAction" method="calculateMyFunds">
-			<result name="succeed" type="redirect">/EmployeeFunds.jsp</result>
-			<result name="failed" type="redirect">/EmployeeIndex.jsp</result>
-		</action>
-		<action name="AcceptOrder" class="orderUpdateAction" method="accept">
-			<result name="success">/timer.jsp</result>
-			<result name="failed">/findfailed.jsp</result>
-			<result name="noright">/noright.jsp</result>
-		</action>
-		<action name="SubmitOrder" class="orderUpdateAction" method="submit">
-			<result name="success">/EmployeeIndex.jsp</result>
-			<result name="failed">/error.jsp</result>
-		</action>
-		<action name="OrderByDefault" class="orderDisplayAction" method="bydefault">
-			<result name="success">/findMission.jsp</result>
-			<result name="failed">/findMission.jsp</result>
-		</action>
-		<action name="OrderBySalary" class="orderDisplayAction" method="bysalary">
-			<result name="success">/findMission.jsp</result>
-			<result name="failed">/findMission.jsp</result>
-		</action>
-		<action name="OrderByRank" class="orderDisplayAction" method="byrank">
-			<result name="success">/findMission.jsp</result>
-			<result name="failed">/findMission.jsp</result>
-		</action>
-		<action name="OrderByNeed" class="orderDisplayAction" method="byneed">
-			<result name="success">/findMission.jsp</result>
-			<result name="failed">/findMission.jsp</result>
-		</action>
-		<action name="findAll" class="employeeHistoryAction" method="findAll">
-			<result name="succeed" >/EmployeeHistory.jsp</result>
-			<result name="failed" >/EmployeeHistory.jsp</result>
-		</action>
-		<action name="findWeek" class="employeeHistoryAction" method="findWeek">
-			<result name="succeed" >/EmployeeHistory.jsp</result>
-			<result name="failed" >/EmployeeHistory.jsp</result>
-		</action>
-		<action name="findMonth" class="employeeHistoryAction" method="findMonth">
-			<result name="succeed" >/EmployeeHistory.jsp</result>
-			<result name="failed" >/EmployeeHistory.jsp</result>
-		</action>
-		<action name="CheckDetail" class="orderDisplayAction" method="checkmerchant">
-			<result name="success" type="redirect">/EmployeeIndex.jsp</result>
-			<result name="failed">/findMission.jsp</result>
-		</action>
-		<!-- 搜索加入小组 -->
-		<action name="searchGroup" class="searchGroupAction" method="join">
-			<result name="joinsuccess" type="chain">findTeam</result>
-			<result name="joinfailed">/SearchGroup.jsp</result>
-		</action>
-		
-		
-		<action name="findTeam" class="employeeTeamAction" method="findTeam">
-			<result name="teamfound">/EmployeeTeam.jsp</result>
-			<result name="teamnotfound">/EmployeeNoTeam.jsp</result>
-		</action>
-		<action name="employeeCreateTeam" class="employeeCreateTeamAction" method="employeeCreateTeam">
-			<result name="success" type="chain">findTeam</result>
-			<result name="input">/EmployeeCreateTeam.jsp</result>
-			<result name="failed">/EmployeeCreateTeam.jsp</result>
-		</action>
-		<action name="employeeExitTeam" class="employeeTeamAction" method="employeeExitTeam">
-			<result name="success" type="chain">findTeam</result>
-		</action>
-		
-		<!-- 聊天 -->
-		<action name="chatsend" class="sendAction" method="index">
-		</action>
-		<action name="chatreceive" class="receiveAction" method="index">
-		</action>
-		<action name="chatgroup" class="chatGroupAction" method="create">
-		    <result name="success">/ChatWindow.jsp</result>
-		    <result name="failed">/error.jsp</result>
-		</action>
-	</package>
-</struts>    
+	<!-- 返回订单action -->
+	<bean name="merchantOrderFindByFinishAction" class="cn.edu.zjut.action.MerchantOrdersFindByFinishAction" scope="prototype">
+        <property name="orderController" ref="merchantOrderController"/>
+    </bean>
+	
+	<!-- 返回已支付订单action -->
+	<bean name="merchantOrderFindByPayAction" class="cn.edu.zjut.action.MerchantOrdersFindByPayAction" scope="prototype">
+        <property name="orderController" ref="merchantOrderController"/>
+    </bean>
+	
+	<!-- 小组DAO -->
+	<bean id="groupDAO" class="cn.edu.zjut.dao.GroupDAO" parent="baseDAO" />
+	
+	<!-- 搜索小组service -->
+	<bean id="searchGroupController" class="cn.edu.zjut.service.SearchGroupController">
+        <property name="groupDAO" ref="groupDAO"/>
+        <property name="employeeDAO" ref="employeeDAO" />
+    </bean>
+	
+	<!-- 搜索小组action -->
+	<bean id="searchGroupAction" class="cn.edu.zjut.action.SearchGroupAction" scope="prototype">
+		<property name="searchGroupController" ref="searchGroupController" />
+	</bean>
+	
+	
+		<!-- 鏌ユ壘鏄惁鏈夐槦浼?-->
+	<bean id="employeeTeamAction" class="cn.edu.zjut.action.EmployeeTeamAction" scope="prototype">
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeTeamController" class="cn.edu.zjut.service.EmployeeTeamController">
+		<property name="employeeDAO" ref="employeeDAO" />
+		<property name="groupDAO" ref="groupDAO" />
+	</bean>
+	
+	<!-- 鍒涘缓闃熶紞 -->
+	
+	<bean id="employeeCreateTeamAction" class="cn.edu.zjut.action.EmployeeCreateTeamAction" scope="prototype">
+		<property name="employeeCreateTeamController" ref="employeeCreateTeamController"/>
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeCreateTeamController" class="cn.edu.zjut.service.EmployeeCreateTeamController">
+		<property name="igroupDAO" ref="groupDAO" />
+	</bean>
+	
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" 
+                    value="com.mysql.jdbc.Driver"/>
+		<property name="url" 
+                    value="jdbc:mysql://localhost:3306/helpdb"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+		    <list>
+			    <value>cn/edu/zjut/po/Employee.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Merchant.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Order.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Igroup.hbm.xml</value>
+			    <value>cn/edu/zjut/po/TeamMessage.hbm.xml</value>
+			    <value>cn/edu/zjut/po/ChatGroup.hbm.xml</value>
+		    </list>
+	    </property>
+	</bean>
+</beans>
