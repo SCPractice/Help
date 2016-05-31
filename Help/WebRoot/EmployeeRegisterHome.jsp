@@ -32,7 +32,7 @@ document.createElement("menu");
 <section class="main w12">
 	<div class="title"><a class="title1 db fl">受雇者</a><a class="title2 db fl">商家</a></div>
 	<div class="fr tit2"><span class="arr"></span></div>
-	<div><iframe id="content" src="EmployeeRegisterBasic.jsp" height="700px" width="100%" frameborder="0"  ></iframe></div>
+	<div><iframe id="content" src="EmployeeRegisterBasic.jsp" height="820px" width="100%" frameborder="0"  ></iframe></div>
 </section>
 </body>
 </html>

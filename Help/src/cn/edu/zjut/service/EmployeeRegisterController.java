@@ -1,14 +1,21 @@
 /*受雇者注册Service*/
 package cn.edu.zjut.service;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.mail.MessagingException;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.teetaa.util.FaceAlignment;
+import com.teetaa.util.Facerecognition;
 import com.opensymphony.xwork2.ActionContext;
 import com.teetaa.util.MD5;
 import com.teetaa.util.SendMail;
@@ -52,7 +59,8 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 			age = nowyear - birthyear + 1;
 		}
 		employee.setEmployeeAge(age); // 设置年龄
-		employee.setEmployeeIMG("Employee/EmployeeIMG/" + employee.getEmployeeID() + "/head.jpg"); // 设置头像路径
+		employee.setEmployeeIMG("Employee/EmployeeIMG/"+employee.getEmployeeID()+"/head.jpg");   //设置头像路径
+		employee.setEmployeeFace("../../headIMG/"+employee.getEmployeeID()+".jpg");
 		if (!employeeDAO.findByIDNum(employee))
 		{
 			System.out.println("对不起，您的身份证已经被使用过，请重新注册！");
@@ -71,6 +79,7 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		}
 	}
 
+	
 	public boolean registerUpdate(Employee employee) {
 		System.out.println("-----EmployeeRegisterUpdateController-----");
 		ActionContext ctx= ActionContext.getContext();
@@ -125,5 +134,63 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		else
 			return false;
 	}
+	/* 保存原图 */
+	public static void Original(String srcImgPath, String targerPath) {
+		OutputStream os = null;
+
+		try {
+			Image srcImg = ImageIO.read(new File(srcImgPath));
+
+			BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null), srcImg.getHeight(null),
+					BufferedImage.TYPE_INT_RGB);
+			Graphics2D g = buffImg.createGraphics();
+
+			g.drawImage(srcImg, 0, 0, srcImg.getWidth(null), srcImg.getHeight(null), null);
+
+			g.dispose();
+			os = new FileOutputStream(targerPath);
+			// 生成图片
+			srcImg.flush();
+
+			ImageIO.write(buffImg, "JPG", os);
+			os.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != os)
+					os.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	@Override
+	public boolean uploadface(File photo, String employeeID) {
+		System.out.println("----uploadfacecontroller-----");
+
+		String srcImgPath = photo.getAbsolutePath();// 已经包含照片名
+		System.out.println(srcImgPath);
+		String path=ServletActionContext.getServletContext().getRealPath("/");
+		System.out.println(1);
+		path =path+"..\\..\\EmployeeHeadIMG\\"+employeeID+".jpg";
+		System.out.println(path);
+		FaceAlignment ni = new FaceAlignment();
+		System.out.println(3);
+		try{
+			System.out.println(1);
+			int ans = ni.cutface(srcImgPath, path);
+			System.out.println("ans:"+ans);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println("图片对齐完毕");
+		System.out.println("上传成功！");
+		return true;
+	}
+
+
 
 }

@@ -1,5 +1,7 @@
 /*ÉÌ¼ÒµÇÂ¼action*/
 package cn.edu.zjut.action;
+import java.io.File;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.teetaa.util.MD5;
 
@@ -10,6 +12,7 @@ public class MerchantLoginAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	private Merchant merchant;
+	private File face;
 	private IMerchantLoginController MerchantLoginController;
 	
 	public Merchant getMerchant() {
@@ -25,6 +28,14 @@ public class MerchantLoginAction extends ActionSupport {
 		this.MerchantLoginController = MerchantRegisterController;
 	}
 	
+	public File getFace() {
+		return face;
+	}
+
+	public void setFace(File face) {
+		this.face = face;
+	}
+
 	public String login(){
 		String securePassword="";
 		MD5 md5=new MD5();
@@ -42,5 +53,14 @@ public class MerchantLoginAction extends ActionSupport {
 			return "loginfailed";
 		}
 	}
+/*	public String face(){
+		
+		if(MerchantLoginController.face(face)){
+			return "loginsuccess";
+		}
+		else{
+			return "loginfailed";
+		}
+	}*/
 	
 }

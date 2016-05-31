@@ -409,7 +409,7 @@
 
 		<div class="inputsec">
 			<form action="EmployeeRegister" id="basic" method="post"
-				enctype="multipart/form-data" >
+				enctype="multipart/form-data">
 				<ul>
 					<li><label class="fl mr2">账号：</label> <input type="text"
 						onblur="checkid(this.value.toString())" tabindex="3"
@@ -496,7 +496,11 @@
 						<div class="msg-error" id="idnErr">
 							<s:fielderror fieldName="employee.employeeSex" />
 						</div></li>
-
+					<li><label class="fl mr2">证件照：</label> <input type="file"
+						name="Face" class="txt-m fl">
+						<div class="msg-error">
+							<s:fielderror fieldName="Face" />
+						</div></li>
 					<li><label class="fl mr2">手机号码：</label> <input type="text"
 						onblur="checkph(this.value)" tabindex="3"
 						name="employee.employeePhone" id="tel" autocomplete="off"
@@ -534,8 +538,8 @@
 
 					<li class="clr"><label class="db fl">&nbsp;</label><input
 						type="submit" class="db fl next" value="下一步" /></li>
-						
-						
+
+
 					<li style="display: none"><input name="employee.employeeState"
 						type="hidden" value="0"></li>
 					<li style="display: none"><input name="employee.employeeGrade"

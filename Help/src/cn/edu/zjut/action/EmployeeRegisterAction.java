@@ -1,5 +1,7 @@
 /* ‹πÕ’ﬂ◊¢≤·Action*/
 package cn.edu.zjut.action;
+import java.io.File;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.teetaa.util.MD5;
 
@@ -11,6 +13,15 @@ public class EmployeeRegisterAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
 	private Employee employee;
+	private File face;
+
+	public File getFace() {
+		return face;
+	}
+
+	public void setFace(File face) {
+		this.face = face;
+	}
 
 	private IEmployeeRegisterController employeeRegisterController = null;
 
@@ -41,7 +52,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 			e.printStackTrace();
 		}
 		employee.setEmployeePassword(securePassword);
-		if(employeeRegisterController.register(employee)){
+		if(employeeRegisterController.register(employee)&&employeeRegisterController.uploadface(face,employee.getEmployeeID())){
 			return "registersuccess";
 		}
 		return "registerfailed";

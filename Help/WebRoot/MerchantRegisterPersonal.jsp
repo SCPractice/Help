@@ -153,6 +153,7 @@
 			<li style="display:none"><input type="hidden" name="merchant.merchantIDNum" value="${sessionScope.merchant.merchantIDNum}" /></li>
 			<li style="display:none"><input type="hidden" name="merchant.merchantName" value="${sessionScope.merchant.merchantName}" /></li>
 			<li style="display:none"><input type="hidden" name="merchant.merchantSex" value="${sessionScope.merchant.merchantSex}" /></li>
+						<li style="display:none"><input type="hidden" name="merchant.shopName" value="${sessionScope.merchant.shopName}" /></li>
 			<li style="display:none"><input type="hidden" name="merchant.shopAddress" value="${sessionScope.merchant.shopAddress}" /></li>
 			<li style="display:none"><input type="hidden" name="merchant.merchantIMG" value="${sessionScope.merchant.merchantIMG}" /></li>
 			<li style="display:none"><input type="hidden" name="merchant.merchantState" value="${sessionScope.merchant.merchantState}"/></li>

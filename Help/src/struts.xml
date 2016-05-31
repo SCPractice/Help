@@ -35,6 +35,12 @@
 			<result name="failed">/EmployeeCheckedPersonal.jsp</result>
 		</action>
 		
+				<!-- 受雇者人脸登录 -->
+		<action name="EmployeeFace" class="employeeFaceLoginAction" method="face">
+			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="loginfailed">/EmployeeLogin.jsp</result>
+			<result name="input">/EmployeeLogin.jsp</result>
+		</action>
 		<!-- 商家登录 -->
 		<action name="MerchantLogin" class="merchantLoginAction"
 			method="login">

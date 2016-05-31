@@ -1,5 +1,7 @@
 /*ÊÜ¹ÍÕßµÇÂ¼Action*/
 package cn.edu.zjut.action;
+import java.io.File;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.teetaa.util.MD5;
 
@@ -25,6 +27,7 @@ public class EmployeeLoginAction extends ActionSupport{
 		this.employeeLoginController = employeeRegisterController;
 	}
 	
+
 	public String login(){
 		String securePassword="";
 		MD5 md5=new MD5();
@@ -42,4 +45,5 @@ public class EmployeeLoginAction extends ActionSupport{
 			return "loginfailed";
 		}
 	}
+
 }

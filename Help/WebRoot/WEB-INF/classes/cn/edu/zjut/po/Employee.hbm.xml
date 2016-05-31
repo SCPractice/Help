@@ -41,10 +41,13 @@
             <column name="employeeState"/>
         </property>
         <property name="employeeIMG" type="string">
-            <column name="employeeIMG" length="45"/>
+            <column name="employeeIMG" length="100"/>
         </property>
         <property name="employeeSignature" type="string">
             <column name="employeeSignature" length="100"/>
+        </property>
+                <property name="employeeFace" type="string">
+            <column name="employeeFace" length="100"/>
         </property>
     </class>
 </hibernate-mapping>

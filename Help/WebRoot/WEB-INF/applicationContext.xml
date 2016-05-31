@@ -77,6 +77,10 @@
 	<bean id="employeeLoginAction" class="cn.edu.zjut.action.EmployeeLoginAction" scope="prototype">
 		<property name="employeeLoginController" ref="employeeLoginController" />
 	</bean>
+	
+		<bean id="employeeFaceLoginAction" class="cn.edu.zjut.action.EmployeeFaceLoginAction" scope="prototype">
+		<property name="employeeLoginController" ref="employeeLoginController" />
+	</bean>
 	<!-- 注册 action -->
 	<bean id="employeeRegisterAction" class="cn.edu.zjut.action.EmployeeRegisterAction" scope="prototype">
 		<property name="employeeRegisterController" ref="employeeRegisterController" />

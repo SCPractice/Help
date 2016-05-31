@@ -29,6 +29,10 @@
 	    	<s:submit value="登录" theme="simple"/>
 	    </div>
 	    </s:form>
+	    <form action="EmployeeFace" method="post" enctype="multipart/form-data">
+	    <input type="file" name="face" >照片登录
+	    <s:submit value="登录" theme="simple"/>
+	    </form>
 	</div>
 	<div class="login-bottom-employee">
 		<h3>没有账号？&nbsp;<a href="EmployeeRegisterHome.jsp">点此注册</a></h3>

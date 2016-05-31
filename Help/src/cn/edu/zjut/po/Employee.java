@@ -24,6 +24,7 @@ public class Employee {
 	private int agreement;//阅读同意
 	private String groupID;//所加入的小组的ID
 	private Igroup group;//所加入的小组
+	private String employeeFace;//证件照
 	//以下是各属性的get和set方法
 	public String getEmployeeID() {
 		return employeeID;
@@ -109,6 +110,7 @@ public class Employee {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
 	public int getAgreement() {
 		return agreement;
 	}
@@ -126,5 +128,11 @@ public class Employee {
 	}
 	public void setGroupID(String groupID) {
 		this.groupID = groupID;
+	}
+	public String getEmployeeFace() {
+		return employeeFace;
+	}
+	public void setEmployeeFace(String employeeFace) {
+		this.employeeFace = employeeFace;
 	}
 }
