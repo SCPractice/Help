@@ -120,15 +120,18 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 		return true;
 	}
 
+	@SuppressWarnings("finally")
 	public List findByHQL(String hql){//¸ù¾ÝHQLÓï¾ä²éÑ¯
+		Query queryObject=null;
 		try {
 			String queryString = hql;
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
+			queryObject = getSession().createQuery(queryString);
+			
 		} catch (RuntimeException re) {
 			throw re;
 		} finally{
 			getSession().close();
+			return queryObject.list();
 		}
 	}
 	
