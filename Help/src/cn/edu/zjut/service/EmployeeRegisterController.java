@@ -84,7 +84,8 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		System.out.println("-----EmployeeRegisterUpdateController-----");
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
-		String email = "289200105@qq.com";// employee.getEmployeeID()+"@zjut.edu.cn";
+		String email = employee.getEmployeeID()+"@zjut.edu.cn";
+				//"289200105@qq.com";// 
 		String content = "<a href=\"http://localhost:8080/Help/EmployeeCheck?employee.employeeID="
 				+ employee.getEmployeeID() + "\">";
 		String m = null;

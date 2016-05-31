@@ -104,7 +104,6 @@
 	<bean id="merchantLoginController" class="cn.edu.zjut.service.MerchantLoginController">
 		<property name="merchantDAO" ref="merchantDAO" />
 	</bean>
-	
 	<!-- 商家註冊service -->
 	 <bean id="merchantRegisterController" class="cn.edu.zjut.service.MerchantRegisterController" >
         <property name="merchantDAO" ref="merchantDAO"/>
