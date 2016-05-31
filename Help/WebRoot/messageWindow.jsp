@@ -15,7 +15,7 @@
     
     var xmlHttp = false;
     
-    setInterval(create,10000);
+    setInterval(create,600);
     function create(){
     try {
     xmlHttp = new XMLHttpRequest();
