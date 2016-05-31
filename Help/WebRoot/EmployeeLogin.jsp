@@ -40,7 +40,7 @@
 	<p>Copyright &copy; 2016 Clouds Help项目开发小组</p>
 </div>
 
-<form>
+<form action="EmployeeFace" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
 			  <div class="modal-dialog" style="margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;width:650px;margin-top:150px">  
 			    <div class="modal-content">  
@@ -50,7 +50,7 @@
 			      </div>  
 			      
 			      <div class="modal-body">  
-				  	<input id="file-1" class="file" type="file" name="picture">
+				  	<input id="file-1" class="file" type="file" name="face">
 			      </div>  
 			      <div class="modal-footer">  
 			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>  

@@ -1,5 +1,7 @@
 /* ‹πÕ’ﬂ◊¢≤·Action*/
 package cn.edu.zjut.action;
+import java.io.File;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.teetaa.util.MD5;
 
@@ -11,6 +13,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
 	private Employee employee;
+	private File face;
 
 	private IEmployeeRegisterController employeeRegisterController = null;
 
@@ -30,7 +33,16 @@ public class EmployeeRegisterAction extends ActionSupport{
 		this.employeeRegisterController = employeeRegisterController;
 	}
 
+	public File getFace() {
+		return face;
+	}
+
+	public void setFace(File face) {
+		this.face = face;
+	}
+
 	public String register() {
+		System.out.println("-----EmployeeRegisterAction-----");
 		String securePassword="";
 		MD5 md5=new MD5();
 		try {
@@ -41,9 +53,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 		}
 		employee.setEmployeePassword(securePassword);
 		employee.setPool(0);
-		if(employeeRegisterController.register(employee) &&
-				employeeRegisterController.uploadidface(employee) &&
-				employeeRegisterController.uploadidback(employee)){
+		if(employeeRegisterController.register(employee)&&employeeRegisterController.uploadface(face,employee.getEmployeeID())){
 			return "registersuccess";
 		}
 		return "registerfailed";

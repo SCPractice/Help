@@ -23,12 +23,7 @@
 			   <message>请输入密码！</message>
 		</field-validator>
 	</field>
-	<field name="employee.confirmPassword">
-        <field-validator type="fieldexpression">
-            <param name="expression">employee.confirmPassword==employee.employeePassword</param>
-            <message>两次密码不一致！</message>
-        </field-validator>
-    </field>
+
 	<field name="employee.employeeUserName">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
@@ -41,18 +36,7 @@
             <message>请输入有效的身份证号码！</message>
         </field-validator>
 	</field>
-	<field name="employee.face">
-		<field-validator type="required">
-			<param name="trim">true</param>
-			<message>请上传身份证正面照片！</message>
-		</field-validator>
-	</field>
-	<field name="employee.back">
-		<field-validator type="required">
-			<param name="trim">true</param>
-			<message>请上传身份证反面照片！</message>
-		</field-validator>
-	</field>
+
 	<field name="employee.employeeName">
 		<field-validator type="required">
 			<param name="trim">true</param>
@@ -82,5 +66,5 @@
 		<param name="expression">employee.agreement=="1"</param>
 			<message>请同意服务条款</message>
 		</field-validator>
-	</field>
+	</field> 
 </validators> 

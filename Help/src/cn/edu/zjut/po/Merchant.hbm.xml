@@ -28,14 +28,11 @@
         <property name="merchantPhone" type="java.lang.String">
             <column name="merchantPhone" length="11" />
         </property>
-        <property name="merchantMail" type="java.lang.String">
-            <column name="merchantMail" length="20" />
-        </property>
         <property name="shopName" type="java.lang.String">
-            <column name="ShopName" length="50" />
+            <column name="shopName" length="50" />
         </property>
         <property name="shopAddress" type="java.lang.String">
-            <column name="ShopAddress" length="50" />
+            <column name="shopAddress" length="50" />
         </property>
         <property name="merchantGrade" type="java.lang.Float">
             <column name="merchantGrade" precision="12" scale="0" />
