@@ -10,7 +10,6 @@ public class EmployeeFaceLoginAction {
 	public File getFace() {
 		return face;
 	}
-
 	public void setFace(File face) {
 		this.face = face;
 	}
