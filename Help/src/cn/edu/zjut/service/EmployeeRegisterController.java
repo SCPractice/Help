@@ -91,6 +91,7 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("受雇者个性签名："+employee.getEmployeeSignature());
 		if (employeeDAO.update(employee))
 		{
 			session.put("employee", employee);

@@ -14,7 +14,10 @@
             <column name="employeePassword" length="32"/>
         </property>
         <property name="employeeUserName" type="string">
-            <column name="employeeUserName" length="20" />
+            <column name="employeeUsername" length="20" />
+        </property>
+        <property name="employeeFace" type="string">
+            <column name="employeeFace" length="100" />
         </property>
         <property name="employeeIDNum" type="string">
             <column name="employeeIDNum" length="18" />

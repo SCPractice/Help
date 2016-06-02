@@ -160,7 +160,9 @@
 			<li style="display:none"><input type="hidden" name="employee.employeeState" value="${sessionScope.employee.employeeState}"/></li>
 			<li style="display:none"><input type="hidden" name="employee.employeeGrade" value="${sessionScope.employee.employeeGrade}"/></li>
 			<li style="display:none"><input type="hidden" name="employee.employeeFace" value="${sessionScope.employee.employeeFace}"/></li>
+			<li style="display:none"><input type="hidden" name="employee.employeeAddress" value="${sessionScope.employee.employeeAddress}"/></li>
 			<!-- <li class="clr"><a href="EmployeeRegisterSuccess.jsp">跳过</a></li> -->
+			
 		</ul>
 	</form>
 	</div>

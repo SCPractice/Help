@@ -53,6 +53,7 @@ public class EmployeeRegisterAction extends ActionSupport{
 		}
 		employee.setEmployeePassword(securePassword);
 		employee.setPool(0);
+	    System.out.println("ÈËÁ³Â·¾¶£º"+employee.getEmployeeFace());
 		if(employeeRegisterController.register(employee)&&employeeRegisterController.uploadface(face,employee.getEmployeeID())){
 			return "registersuccess";
 		}

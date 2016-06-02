@@ -497,9 +497,9 @@
 							<s:fielderror fieldName="employee.employeeSex" />
 						</div></li>
 					<li><label class="fl mr2">证件照：</label> <input type="file"
-						name="Face" class="txt-m fl">
+						name="face" class="txt-m fl">
 						<div class="msg-error">
-							<s:fielderror fieldName="Face" />
+							<s:fielderror fieldName="face" />
 						</div></li>
 					<li><label class="fl mr2">手机号码：</label> <input type="text"
 						onblur="checkph(this.value)" tabindex="3"

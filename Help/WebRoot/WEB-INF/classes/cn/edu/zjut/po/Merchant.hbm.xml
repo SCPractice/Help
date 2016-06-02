@@ -25,9 +25,6 @@
         <property name="merchantAge" type="java.lang.Integer">
             <column name="merchantAge" />
         </property>
-        <property name="merchantPhone" type="java.lang.String">
-            <column name="merchantPhone" length="11" />
-        </property>
         <property name="shopName" type="java.lang.String">
             <column name="shopName" length="50" />
         </property>

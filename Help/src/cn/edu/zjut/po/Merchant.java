@@ -12,7 +12,6 @@ public class Merchant  implements java.io.Serializable {
 	private String merchantIDNum;//身份证
 	private String merchantName;//姓名
 	private Integer merchantAge;//年龄
-	private String merchantPhone;//手机号
 	private File merchantBusinessLicence;//营业执照
 	private File merchantSecurityLicence;//卫生许可
 	private Integer shopID;//店号
@@ -45,14 +44,13 @@ public class Merchant  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public Merchant(String merchantID, String merchantUsername, String merchantPassword, String merchantIDNum, String merchantName, Integer merchantAge, String merchantPhone, File merchantBusinessLicence, File merchantSecurityLince,  String shopName, String shopAddress, Float merchantGrade,  Boolean merchantSex, String merchantIMG, Boolean merchantState,String merchantSignature,Integer merchantAgreement) {
+    public Merchant(String merchantID, String merchantUsername, String merchantPassword, String merchantIDNum, String merchantName, Integer merchantAge, File merchantBusinessLicence, File merchantSecurityLince,  String shopName, String shopAddress, Float merchantGrade,  Boolean merchantSex, String merchantIMG, Boolean merchantState,String merchantSignature,Integer merchantAgreement) {
         this.merchantID = merchantID;
         this.merchantUsername = merchantUsername;
         this.merchantPassword = merchantPassword;
         this.merchantIDNum = merchantIDNum;
         this.merchantName = merchantName;
         this.merchantAge = merchantAge;
-        this.merchantPhone = merchantPhone;
         this.merchantBusinessLicence = merchantBusinessLicence;
         this.merchantSecurityLicence = merchantSecurityLince;
         this.shopName = shopName;
@@ -112,14 +110,6 @@ public class Merchant  implements java.io.Serializable {
     
     public void setMerchantAge(Integer merchantAge) {
         this.merchantAge = merchantAge;
-    }
-
-    public String getMerchantPhone() {
-        return this.merchantPhone;
-    }
-    
-    public void setMerchantPhone(String merchantPhone) {
-        this.merchantPhone = merchantPhone;
     }
 
 
