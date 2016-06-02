@@ -1,37 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+<constant name="struts.convention.default.parent.package" value="struts-default" />
 	<package name="strutsBean" extends="struts-default" namespace="/">
+	
+	<!-- 受雇者登陆 -->
 		<action name="EmployeeLogin" class="employeeLoginAction" method="login">
 			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="loginfailed">/EmployeeLogin.jsp</result>
 			<result name="input">/EmployeeLogin.jsp</result>
 		</action>
-		<action name="EmployeeUpdated" class="employeeUpdateAction" method="updated">
+	
+	<!-- 受雇者更新个人信息 -->
+		<action name="EmployeeUpdated" class="employeeUpdateAction" method="update">
 			<result name="updatesuccess" type="redirect">/EmployeeIndex.jsp</result>
 			<result name="updatefailed" type="redirect">/EmployeeIndex.jsp</result>
 		</action>
-		<!-- 存放保证金 -->
+	
+	<!-- 存放保证金 -->
 		<action name="payPromise" class="employeeUpdateAction" method="payPromise">
 			<result name="succeed" type="redirect">/findMission.jsp</result>
 			<result name="failed" type="redirect">/error.jsp</result>
 		</action>
+	<!-- 受雇者注册 -->
 		<action name="EmployeeRegister" class="employeeRegisterAction" method="register">
 			<result name="registersuccess">/EmployeeRegisterPersonal.jsp</result>
 			<result name="input">/EmployeeRegisterBasic.jsp</result>
 			<result name="registerfailed">/EmployeeRegisterBasic.jsp</result>
 		</action>
-		<action name="EmployeeUpdate" class="employeeUpdateAction" method="update">
+	
+	<!-- 受雇者完善个人信息 -->
+		<action name="EmployeeRegisterUpdate" class="employeeUpdateAction" method="registerUpdate">
 			<result name="updatesuccess">/EmployeeRegisterSuccess.jsp</result>
 			<result name="updatefailed">/EmployeeRegisterPersonal.jsp</result>
 		</action>
-		<!-- 共享池捐献 -->
+		
+	<!-- 受雇者自动校验 -->
+		<action name="EmployeeCheck" class="employeeUpdateAction" method="check">
+			<result name="success">/EmployeeCheckedSuccess.jsp</result>
+			<result name="failed">/EmployeeCheckedPersonal.jsp</result>
+		</action>
+		
+	<!-- 受雇者人脸登录 -->
+		<action name="EmployeeFace" class="employeeFaceLoginAction" method="face">
+			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="loginfailed">/EmployeeLogin.jsp</result>
+			<result name="input">/EmployeeLogin.jsp</result>
+		</action>
+		
+	<!-- 共享池捐献 -->
 		<action name="donate" class="employeeTeamAction" method="donate">
 			<result name="succeed" >/EmployeeTeam.jsp</result>
 			<result name="failed" >/EmployeeTeam.jsp</result>
 		</action>
 		
-		<!-- 商家登录 -->
+	<!-- 商家登录 -->
 		<action name="MerchantLogin" class="merchantLoginAction"
 			method="login">
 			<result name="loginsuccess" type="redirect">/MerchantIndex.jsp</result>
@@ -39,7 +62,7 @@
 			<result name="input">/MerchantLogin.jsp</result>
 		</action>
 
-		<!-- 商家注册 -->
+	<!-- 商家注册 -->
 		<action name="MerchantRegister" class="merchantRegisterAction"
 			method="register">
 			<result name="regSUCCESS">/MerchantRegisterPersonal.jsp</result>
@@ -47,7 +70,7 @@
 			<result name="input">/MerchantRegisterBasic.jsp</result>
 		</action>
 
-		<!-- 商家注册上传图片更新 -->
+	<!-- 商家注册上传图片更新 -->
 		<action name="MerchantRegisterUpdate" class="merchantUpdateAction"
 			method="update">
 			<result name="updatesuccess">/MerchantRegisterSuccess.jsp
@@ -56,7 +79,7 @@
 			</result>
 		</action>
 		
-		<!--  商家更新界面 -->
+	<!--  商家更新界面 -->
 		<action name="MerchantUpdate" class="merchantUpdateAction"
 			method="update">
 			<result name="updatesuccess" type="redirect">/MerchantIndex.jsp</result>
@@ -64,26 +87,26 @@
 			<result name="input">/MerchantIndex.jsp</result>
 		</action>
 		
-		<!-- 商家上传图片 -->
+	<!-- 商家上传图片 -->
 		<action name="merchantUploadIMG" class="merchantUploadAction" method="upload">
 			<result name="success">/MerchantRegisterPersonal.jsp</result>
 			<result name="failed">/MerchantRegisterPersonal.jsp</result>
 		</action>
 		
-		<!-- 商家裁剪图片 -->
+	<!-- 商家裁剪图片 -->
 		<action name="merchantZoomImage" class="merchantUploadAction" method="zoom">
 			<result name="success">/MerchantRegisterPersonal.jsp</result>
 			<result name="failed">/MerchantRegisterPersonal.jsp</result>
 		</action>
 		
-		<!-- 订单发布 -->
+	<!-- 订单发布 -->
 		<action name="merchantReleaseOrder" class="merchantReleaseOrderAction" method="releaseOrder">
             <result name="success">/PutSuccess.jsp</result>
             <result name="error">/PutFailed.jsp</result>
             <result name="input">/MerchantPutMission.jsp</result>
         </action>
 		
-		<!-- 返回未完成订单 -->
+	<!-- 返回未完成订单 -->
         <action name="findUnfinishedOrder" class="merchantOrderFindByFinishAction" method="findUnfinishedOrder">
             <result name="success">/MerchantHistoryMission.jsp</result>
             <result name="error">/MerchantFindHistoryMissionFailed.jsp</result>
@@ -193,7 +216,7 @@
 		    <result name="failed">/error.jsp</result>
 		</action>
 	</package>
-	<!-- Overwrite Convention -->
+<!-- Overwrite Convention -->
      <constant name="struts.convention.action.suffix" value="Controller" />
      <constant name="struts.convention.action.mapAllMatches" value="true" />
      <!--<constant name="struts.rest.content.restrictToGET" value="false" />-->

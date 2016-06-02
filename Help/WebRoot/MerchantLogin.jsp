@@ -35,7 +35,6 @@
 			<input type="text"  name="merchant.merchantID" placeholder="User Id">
 			<input type="password"   name="merchant.merchantPassword" placeholder="Password">
 	    <div class="forgot">
-	    	<a href="#" data-toggle="modal" data-target="#myModal">扫描人脸登录</a>
 	    	<input type="submit" value="登录" >
 	    </div>
 	    </form>
@@ -47,27 +46,6 @@
 <div class="copyright">
 	<p>Copyright &copy; 2016 Clouds Help项目开发小组</p>
 </div>
-<form>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
-			  <div class="modal-dialog" style="margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;width:650px;margin-top:150px">  
-			    <div class="modal-content">  
-			      <div class="modal-header">  
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
-			        <h4 class="modal-title">人脸识别</h4>  
-			      </div>  
-			      
-			      <div class="modal-body">  
-				  	<input id="file-1" class="file" type="file" name="picture">
-			      </div>  
-			      <div class="modal-footer">  
-			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>  
-			        <button type="submit" class="btn btn-primary" >登录</button>  
-			      </div>  
-			    </div><!-- /.modal-content -->  
-			  </div><!-- /.modal-dialog -->  
-			</div><!-- /.modal -->
-</form>
-
 <script src="commonJS/jquery.min.js" type="text/javascript"></script>
 <script src="commonJS/fileinput.js" type="text/javascript"></script>	
 <script src="commonJS/fileinput_locale_zh.js" type="text/javascript"></script>

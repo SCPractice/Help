@@ -206,8 +206,8 @@
                                 <input type="text" name="merchant.merchantAge" value="<s:property value="#session.merchant.merchantAge"/>" readonly/>
                             </fieldset>
                             <fieldset class="col-md-4 col-sm-6">
-                            	<p>联系方式：</p>
-                                <input type="text" name="merchant.merchantPhone" value="<s:property value="#session.merchant.merchantPhone"/>"/>
+                            <p>联系方式：</p>
+                                <input type="text" name="merchant.merchantID" value="<s:property value="#session.merchant.merchantID"/>"readonly/>
                             </fieldset>
                             <fieldset class="col-md-12 col-sm-12">
                             	<p>个性签名：</p>

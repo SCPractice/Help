@@ -21,9 +21,7 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean register(Employee employee) {//注册
-		ActionContext ctx= ActionContext.getContext();
-		session=(Map) ctx.getSession();
-		request=(Map) ctx.get("request");
+		System.out.println("-----EmployeeRegisterDao-----");
 		Transaction tran = null;
 		Session esession = null; 
 		try {
@@ -31,11 +29,8 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			tran = esession.beginTransaction();
 			esession.save(employee);
 			tran.commit();
-			session.put("employee", employee);
-			request.put("tip", "注册成功");
 		} catch (RuntimeException re) {
 			if(tran != null) tran.rollback();
-			System.out.println("注册失败！");
 			return false;
 		} finally {
 			getSession().close();
@@ -233,5 +228,33 @@ public class EmployeeDAO extends BaseHibernateDAO implements IEmployeeDAO{
 			esession.close();
 		}
 		return true;
+	}
+	public boolean changeSate(String ID){
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
+		request=(Map) ctx.get("request");
+	
+		String hql = "from Employee as emp where employeeID='" + ID+ "'";
+		try {
+			String queryString = hql;
+			Query queryObject = getSession().createQuery(queryString);
+			List list=queryObject.list();
+			if (!list.isEmpty()){
+				Employee employee=(Employee)list.get(0);
+				employee.setEmployeeState(true);
+				if(update(employee)){
+					System.out.println("审核通过！");
+					return true;
+				}
+			}
+		}catch (RuntimeException re) {
+			System.out.println(re);
+			request.put("tip", "注册失败，服务器发生异常");
+			System.out.println("审核未通过！");
+			return false;
+		}
+		getSession().close();
+		return true;
+		
 	}
 }

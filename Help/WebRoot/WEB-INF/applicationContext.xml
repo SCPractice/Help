@@ -14,20 +14,27 @@
 	<bean id="sendAction" class="cn.edu.zjut.action.SendAction">
 	    <property name="chatController" ref="chatController"/>
 	</bean>
+	
 	<bean id="receiveAction" class="cn.edu.zjut.action.ReceiveAction">
 	    <property name="chatController" ref="chatController"/>
 	</bean>
+	
 	<bean id="chatGroupAction" class="cn.edu.zjut.action.ChatGroupAction">
 	    <property name="chatGroupController" ref="chatGroupController"/>
 	</bean>
+	
 	<bean id="chatController" class="cn.edu.zjut.service.ChatController">
 	    <property name="chatDAO" ref="chatDAO" />
 	</bean>
+	
 	<bean id="chatGroupController" class="cn.edu.zjut.service.ChatGroupController">
 	    <property name="chatGroupDAO" ref="chatGroupDAO"/>
 	</bean>
+	
 	<bean id="chatDAO" class="cn.edu.zjut.dao.ChatDAO" parent="baseDAO"/>
+	
 	<bean id="chatGroupDAO" class="cn.edu.zjut.dao.ChatGroupDAO" parent="baseDAO"/>
+	
 	<!-- 招募任务-->
 	<bean id="employeeHistoryAction" class="cn.edu.zjut.action.EmployeeHistoryAction" scope="prototype">
 		<property name="employeeHistoryController" ref="employeeHistoryController"/>
@@ -76,6 +83,10 @@
 	<bean id="employeeDAO" class="cn.edu.zjut.dao.EmployeeDAO" parent="baseDAO"/>
 	<!-- 登录 action -->
 	<bean id="employeeLoginAction" class="cn.edu.zjut.action.EmployeeLoginAction" scope="prototype">
+		<property name="employeeLoginController" ref="employeeLoginController" />
+	</bean>
+	
+	<bean id="employeeFaceLoginAction" class="cn.edu.zjut.action.EmployeeFaceLoginAction" scope="prototype">
 		<property name="employeeLoginController" ref="employeeLoginController" />
 	</bean>
 	<!-- 注册 action -->

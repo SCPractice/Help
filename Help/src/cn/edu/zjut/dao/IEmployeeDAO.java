@@ -13,4 +13,5 @@ public interface IEmployeeDAO {
 	public List findTeams();//查询小组及其成员
 	public boolean updateIgroupID();//更新所属小组
 	public boolean exitTeam();
+	public boolean changeSate(String ID);
 }

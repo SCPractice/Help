@@ -354,9 +354,6 @@
 		<div class="main clearfix"></div>
 
 		<div class="md-overlay"></div>
-		<div class="tip">
-			<s:property value="#request.tip"/>
-		</div>
 		<div class="inputsec">
 			<form action="MerchantRegister" id="basic" method="post"
 				enctype="multipart/form-data">
@@ -440,7 +437,7 @@
 							<s:fielderror fieldName="merchant.merchantSex" />
 						</div></li>
 
-					<li><label class="fl mr2">手机号码：</label> <input type="text"
+				<%-- 	<li><label class="fl mr2">手机号码：</label> <input type="text"
 						onblur="checkph(this.value)" tabindex="3"
 						name="merchant.merchantPhone" id="tel" autocomplete="off"
 						maxlength="11" onfocus="usercenter_check.hide_note('tel-tip')"
@@ -449,7 +446,7 @@
 						onClick="if(value==defaultValue){value='';this.style.color='#333'}">
 						<div class="msg-error" id="phErr">
 							<s:fielderror fieldName="merchant.merchantPhone" />
-						</div></li>
+						</div></li> --%>
 
 					<li><label class="fl mr2">店面名：</label> <input type="text"
 						onblur="checkad(this.value)" tabindex="3" name="merchant.shopName"
@@ -482,17 +479,12 @@
 						<div class="msg-error">
 							<s:fielderror fieldName="merchant.agreement" />
 						</div></li>
-
-
-
 					<li class="clr"><label class="db fl">&nbsp;</label><input
 						type="submit" class="db fl next" value="下一步" /></li>
-					<div style="display:none">
-						<li><input name="merchant.merchantState" type="text"
+						<li style="display:none"><input name="merchant.merchantState" type="text"
 							value="0"></li>
-						<li><input name="merchant.merchantGrade" type="text"
+						<li style="display:none"><input name="merchant.merchantGrade" type="text"
 							value="1"></li>
-					</div>
 				</ul>
 			</form>
 		</div>
