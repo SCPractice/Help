@@ -95,9 +95,9 @@ function check(){
 			
 			<fieldset class="col-md-4 col-sm-6">
 				<p>酬金：</p>
-				<input type="text" name="order.trueSalary" value=0 style="display:none">
+				<div style="display:none"> <input type="text" name="order.trueSalary" value=0 style="display:none"></div>
 				<input type="text" name="order.salary" >
-				<s:property value="#session.order.salary" />
+				
 			</fieldset>
 			
 			<fieldset class="col-md-4 col-sm-6">
@@ -120,8 +120,7 @@ function check(){
 			<div class="tip"><s:fielderror/></div>
 			<fieldset class="col-md-12 col-sm-12">
 				<p>备注：</p>
-				<textarea name="order.remark" cols="30" rows="6"><s:property
-						value="#session.order.remark" /></textarea>
+				<textarea name="order.remark" cols="30" rows="6"></textarea>
 			</fieldset>
 			
 			<fieldset class="col-md-12 col-sm-12">

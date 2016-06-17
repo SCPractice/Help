@@ -56,6 +56,7 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		{
 			System.out.println("注册成功！");
 			session.put("employee", employee);
+			session.put("step","1");
 			return true;
 		}
 		else
@@ -83,9 +84,10 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		}
 		content = content + m + "</a>";
 		content = content + "点击链接确认身份";
+		//"gloplwnovnmpcbbj"
 		System.out.println(content);
 		try {
-			SendMail.sendMessage("smtp.qq.com", "289200105@qq.com", "gloplwnovnmpcbbj", email, "邮箱验证", content,
+			SendMail.sendMessage("smtp.163.com", "jiang_jin_peng@163.com", "jjp_289200105", email, "邮箱验证", content,
 					"text/html;charset=gb2312");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
@@ -95,6 +97,7 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 		if (employeeDAO.update(employee))
 		{
 			session.put("employee", employee);
+			
 			System.out.println("完善信息成功！");
 			return true;
 		}
@@ -112,9 +115,12 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 
 	@Override
 	public boolean update(Employee employee) {
+		ActionContext ctx= ActionContext.getContext();
+		session=(Map) ctx.getSession();
 		if (employeeDAO.update(employee))
 		{
 			session.put("employee", employee);
+			
 			System.out.println("完善更新成功！");
 			return true;
 		}
@@ -138,6 +144,11 @@ public class EmployeeRegisterController implements IEmployeeRegisterController {
 			System.out.println(1);
 			int ans = ni.cutface(srcImgPath, path);
 			System.out.println("ans:"+ans);
+			if(ans==0)
+			{
+				return false;
+			}
+			
 		}
 		catch(Exception e)
 		{

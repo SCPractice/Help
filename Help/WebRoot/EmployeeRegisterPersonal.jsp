@@ -2,12 +2,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
   String picUrl =(String)(session.getAttribute("Picurl"));
-  System.out.println(picUrl); 
+  System.out.println("picUrl"+picUrl); 
   String  step = (String)(session.getAttribute("step"));
   System.out.println(step);
   String defaultPic ="Employee/image/man.GIF";
+  if("2".equals(step))
+  {
+	  defaultPic = picUrl;
+  }
   if("3".equals(step))
     defaultPic = picUrl;
+  if("1".equals(step))
+  {
+	  defaultPic="Employee/image/man.GIF";
+  }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -100,6 +108,7 @@
 						<input name="photo.dropHeight" type="hidden" value="120" id="txt_DropHeight" /><br />
                         <input name="photo.imageZoom" type="hidden" id="txt_Zoom" />
 					</div>
+					
 				</form>
 			</div>
 
@@ -130,7 +139,7 @@
 		</form>
 	</div>
 	<% 
-      if(null==picUrl||"".equals(picUrl))
+      if(null==picUrl||"".equals(picUrl)|| "1".equals(step))
       {%>
 	<script type='text/javascript'>Step1();</script>
 	<%}else if(!"".equals(picUrl)&& "2".equals(step)){

@@ -5,14 +5,27 @@ import java.text.DecimalFormat;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 import cn.edu.zjut.po.*;
 import cn.edu.zjut.service.IOrderUpdateController;
 
 public class OrderUpdateAction {
+	/**
+	 * 
+	 */
 	private IOrderUpdateController orderUpdateController;
+	public String getReleaseTime() {
+		return releaseTime;
+	}
+
+	public void setReleaseTime(String releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+
 	private Employee employee;
 	private Order order;
+	private String releaseTime;
 
 	public IOrderUpdateController getOrderUpdateController() {
 		return orderUpdateController;
@@ -26,8 +39,9 @@ public class OrderUpdateAction {
 	public String accept(){//接受招募
 		Map session=ActionContext.getContext().getSession();
 		employee=(Employee)session.get("employee");
+		System.out.println("InAction:"+order.getReleaseTime());
 		if(employee!=null && employee.isEmployeeState()){  //检查权限
-			if(orderUpdateController.accept(order,employee)){
+			if(orderUpdateController.accept(order,employee,releaseTime)){
 				System.out.println(order.getStartTime());
 				return "success";
 			}

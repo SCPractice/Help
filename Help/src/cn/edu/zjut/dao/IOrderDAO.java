@@ -7,7 +7,7 @@ import cn.edu.zjut.po.Merchant;
 import cn.edu.zjut.po.Order;
 
 public interface IOrderDAO {
-	boolean accept(Order order, Employee employee);
+	boolean accept(Order order, Employee employee,String releaseTime);
 	@SuppressWarnings("rawtypes")
 	List findByHql(String hql);
 	boolean update(Order order);

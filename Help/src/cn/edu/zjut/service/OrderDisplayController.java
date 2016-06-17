@@ -53,8 +53,11 @@ public class OrderDisplayController implements IOrderDisplayController{
 				+ " from Order o where o.employee is null and o.endTime>'"+today+"'"
 				+ " group by o.merchant.merchantID,o.releaseTime "
 				+ "order by o.salary DESC";
-		session.put("orderinfos",orderDAO.findByHql(hql));
-		return orderDAO.findByHql(hql);
+		List lists=orderDAO.findByHql(hql);
+		//System.out.println(lists.get(0).);
+		session.put("orderinfos",lists);
+		
+		return lists;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

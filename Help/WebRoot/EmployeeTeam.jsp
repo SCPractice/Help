@@ -114,7 +114,7 @@
 		<table>
 		<tr><td class="widget-title" style="font-size: 15px;font-weight: 600;padding-bottom:10px">成员<br></td></tr>
 		<tr>
-			<s:iterator value="teamMemberList">
+			<s:iterator value="#session.teamMemberList">
 				<td>&nbsp;&nbsp;<a class="pull-left thumb-sm avatar" ><img src='<s:property value="employeeIMG"/>' class="img-circle" alt="..."></a><br><br><s:property value="employeeName"/>&nbsp;&nbsp;</td>
 			</s:iterator>
 		</tr>

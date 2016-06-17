@@ -173,7 +173,6 @@
                     <div class="tip"><s:fielderror/></div>
                     <div class="row">
                         <form action="MerchantUpdate" method="post" class="contact-form"><!-- 查看、更新个人信息 -->
-                            <s:hidden name="merchant.merchantID" value="%{#session.merchant.merchantID}"/><!-- 账号 -->
                             <s:hidden name="merchant.merchantPassword" value="%{#session.merchant.merchantPassword}"/><!-- 密码 -->
                             <s:hidden name="merchant.merchantSex" value="%{#session.merchant.merchantSex}"/><!-- 性别 -->
                             <s:hidden name="merchant.merchantGrade" value="%{#session.merchant.merchantGrade}"/><!-- 等级 -->

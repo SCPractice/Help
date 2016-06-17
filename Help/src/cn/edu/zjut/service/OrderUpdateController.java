@@ -19,8 +19,9 @@ public class OrderUpdateController implements IOrderUpdateController{
 		this.orderDAO = orderDAO;
 	}
 
-	public synchronized boolean accept(Order order,Employee employee){//接受招募
-		return orderDAO.accept(order,employee);
+	public synchronized boolean accept(Order order,Employee employee,String releaseTime){//接受招募
+		System.out.println("Controller:"+order.getReleaseTime());
+		return orderDAO.accept(order,employee,releaseTime);
 	}
 	public boolean submit(Order order) { //提交任务
 		order.setIfFinish(true);

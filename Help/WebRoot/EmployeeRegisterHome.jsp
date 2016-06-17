@@ -21,7 +21,7 @@ document.createElement("menu");
 <header>
 	<div class="w12 header">
 	<a class="db logo fl"><!-- <img src="Employee/img/logo.jpg" width="327" height="94"  alt=""/> --></a>
-	<div class="fr logofr"><a>返回首页</a> |<a>客服中心</a><br>
+	<div class="fr logofr"><a href="index.jsp">返回首页</a> |<a>客服中心</a><br>
 	 如注册遇到问题请拨打：<strong style="font-size:14px;">123456</strong></div>
 	</div>
 </header>

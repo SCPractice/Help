@@ -1,42 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!-- 注册成功 -->
-<!doctype html>
+<!-- 注册主页面，用框架包含注册子页面 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <head>
-  <meta charset="UTF-8">
-  <style>
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
-</style>
-    <style>
-img {
-  display: block;	
-  margin: 0 auto;
-}
-canvas {
-	display: block;
-	margin:0 auto;
-}
-</style>
-	<script src="Employee/js/prefixfree.min.js"></script>
-	<link href="Employee/css/wait.css" type="text/css" rel="Stylesheet" />
+<meta charset="utf-8">
+<title>注册页面</title>
+<link rel="stylesheet" href="Employee/css/EmployeeRegisterStyle1.css"  type="text/css">
+<script type="text/javascript">
+document.createElement("section");
+document.createElement("article");
+document.createElement("footer");
+document.createElement("header");
+document.createElement("hgroup");
+document.createElement("nav");
+document.createElement("menu");
+</script>
 </head>
 <body>
- &nbsp;&nbsp;<img src="Employee/img/03.jpg"/>
-<canvas id="c"></canvas>
-  <script src="Employee/js/wait1.js"></script>
-  <script src="Employee/js/wait2.js"></script>
-<div style="text-align:center;clear:both;">
-<div>
-<p>恭喜你已经完成注册！！！
-<p><a class="db logbtn fr" href="EmployeeLogin.jsp">前往登录</a></p>
-<div class="inputsec">
-<ul>
-<li class="clr">
-</li>
-</ul>
-</div>
-</div>
-</div>
+<header>
+	<div class="w12 header">
+	<a class="db logo fl"><!-- <img src="Employee/img/logo.jpg" width="327" height="94"  alt=""/> --></a>
+	<div class="fr logofr"><a href="index.jsp">返回首页</a> |<a>客服中心</a><br>
+	 如注册遇到问题请拨打：<strong style="font-size:14px;">123456</strong></div>
+	</div>
+</header>
+<div class="head_border"></div>
+<section class="w12 login">
+<em class="fr">已经是会员，请&nbsp;&nbsp;<a class="db logbtn fr" href="EmployeeLogin.jsp">前往登录</a> </em>
+</section>
+<section class="main w12">
+	<div class="title"><a class="title1 db fl">受雇者</a><a class="title2 db fl">商家</a></div>
+	<div class="fr tit2"><span class="arr"></span></div>
+	<div><iframe id="content" src="EmployeeCheckedSuccess1.jsp" height="840px" width="100%" frameborder="0"  ></iframe></div>
+</section>
 </body>
 </html>

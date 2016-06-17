@@ -20,7 +20,7 @@ public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
 	private Map<String, Object> request, session;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean accept(Order order,Employee employee){ //接受招募
+	public boolean accept(Order order,Employee employee,String releaseTime){ //接受招募
 		ActionContext ctx= ActionContext.getContext();
 		request=(Map) ctx.get("request");
 		session=(Map) ctx.get("session");
@@ -29,10 +29,8 @@ public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
 		//找到order
 		System.out.println("寻找招募数据条目");
 		String merchantID=order.getMerchant().getMerchantID();
-		Date releaseTime_temp=order.getReleaseTime();
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String releaseTime = formatter.format(releaseTime_temp);
+		System.out.println(merchantID);
+		System.out.println(order.getOrderID());
 		String hql="from Order as o where o.merchant.merchantID='" + merchantID + "' and o.releaseTime='" + releaseTime +
 				"' and o.employee is null";
 		try {
@@ -198,13 +196,20 @@ public class OrderDAO extends BaseHibernateDAO implements IOrderDAO{
             Transaction ts = session.beginTransaction();
             Query query = session.createQuery("from Order as o where o.acceptTime is not null ");
             List list = query.list();
+            Random random = new Random();
+            int rand=random.nextInt(100);
+            if(list.size()<=2)
+            {
+            	System.out.println("rand:"+rand);
+            	return 60*20+rand;
+            }
             Order order1=(Order)list.get(list.size()-1);
             Order order2=(Order)list.get(list.size()-2);
             double time1=order1.getAcceptTime().getTime()-order1.getReleaseTime().getTime();
             double time2=order2.getAcceptTime().getTime()-order2.getReleaseTime().getTime();
-            Random random = new Random();
-            int rand=random.nextInt(100);
+
             long timefinal=(long) (0.3*time1+0.7*time2)/1000+rand;
+            System.out.println("time:"+timefinal);
             return timefinal;
         } catch (Exception e) {
             e.printStackTrace();

@@ -81,6 +81,7 @@ int pageCount=1;
 			String Username=order.getEmployee().getEmployeeUserName();
 			String phone=order.getEmployee().getEmployeePhone();
 			String path=order.getEmployee().getEmployeeIMG();
+			System.out.println(path);
 			start++;	
 			count++;
 			%>
